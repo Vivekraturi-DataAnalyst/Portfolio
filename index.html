@@ -1,4 +1,4 @@
-
+<!-- Fully working with all links and images. Just before sql popup formatting  -->
 
 <!-- 
  👋 INSTRUCTIONS:
@@ -36,6 +36,346 @@
             --card-bg: #ffffff;
             --nav-bg: linear-gradient(180deg, #ffffff 0%, #e5e7eb 100%);
         }
+
+
+
+
+
+
+.image-crisp {
+    image-rendering: -webkit-optimize-contrast; /* Chrome/Edge/Safari */
+    image-rendering: crisp-edges;               /* General */
+    object-position: center top;                /* Focus on the top of the dashboard */
+}
+
+
+
+/* Forces carousel controls to show during the 'hint' phase */
+.show-hint {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* --- 🏗️ UNIVERSAL PROJECT POPUP ENHANCEMENTS --- */
+
+/* Force exact 50-50 Split */
+.project-case-study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Exact equal division */
+    gap: 3rem;
+    padding: 3rem;
+    height: 100%;
+}
+
+/* --- 🏗️ MASTER PROJECT HUB STYLES --- */
+
+/* Force Exact 50-50 Split */
+.case-study-grid-hub {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 3rem;
+    padding: 3rem;
+}
+
+/* --- 🏗️ PROJECT POPUP MASTER ARCHITECTURE --- */
+
+/* Force exact 50-50 Split */
+.case-study-grid-hub {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    padding: 3rem;
+}
+
+/* --- 🏗️ MASTER PROJECT POPUP LAYOUT --- */
+.case-study-grid-hub {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    padding: 3.5rem;
+    min-height: 100%;
+}
+
+/* --- 🏗️ MASTER PROJECT POPUP ARCHITECTURE --- */
+.case-study-grid-hub {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Exact 50-50 Split */
+    gap: 3.5rem;
+    padding: 3rem;
+    height: 100%;
+}
+
+
+
+
+
+
+/* --- 🏗️ MASTER POPUP HUB ARCHITECTURE --- */
+.hub-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.85); /* Rich Slate Overlay */
+    backdrop-filter: blur(20px);
+    z-index: 3000;
+    display: none; /* Controlled by .active class */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.hub-overlay.active {
+    display: flex;
+}
+
+.hub-content {
+    background: rgba(17, 24, 39, 0.95); /* Dark Theme Base */
+    width: 95%;
+    max-width: 1200px;
+    height: 85vh; /* Fixed height for independent column scrolling */
+    border: 1px solid rgba(139, 154, 255, 0.2);
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden; /* Prevent global scroll */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* 50-50 Split Grid */
+.hub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Exact 50-50 split */
+    height: 100%;
+}
+
+/* Independent Column Scroll Logic */
+.hub-column {
+    height: 100%;
+    overflow-y: auto; /* Allows left and right to scroll separately */
+overflow-x: hidden; /* 👈 ADD THIS: This kills the horizontal wobble */
+    padding: 3rem;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.hub-column::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+/* --- 🎡 INFINITE CAROUSEL ENGINE --- */
+.carousel-viewport {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Perfect 16:9 ratio */
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Professional slide curve */
+    will-change: transform;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hidden Controls revealed on Hover */
+.carousel-controls {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+.carousel-viewport:hover .carousel-controls {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    transition: all 0.3s ease;
+}
+.carousel-arrow:hover { background: #8685e3; transform: translateY(-50%) scale(1.1); }
+.arrow-left { left: 15px; }
+.arrow-right { right: 15px; }
+
+.dash-container {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 6px 18px;
+    border-radius: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 50;
+}
+
+.dash-item {
+    width: 20px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+.dash-item.active { background: #8b9aff; width: 32px; }
+
+/* --- 🔘 PREMIUM ACTION BUTTONS --- */
+.btn-hub-action {
+ display: block; 
+    background: #7776ca;
+    color: white !important;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: 0.5px solid #8b9aff;
+    border-radius: 12px;
+    padding: 10px 24px; /* Changed from 16px: 10px is the new height control */
+    width: 100%;     /* Changed from 100%: set to a specific width */
+    margin: 0 auto;    /* Added to keep the narrower button centered */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    transition: all 0.4s ease;
+}
+.btn-hub-action:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+    box-shadow: 0 8px 25px rgba(139, 154, 255, 0.5);
+}
+
+
+
+
+
+
+/* --- 📦 CONTENT BOXES --- */
+.hub-tech-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+
+/* This ensures the floating button reacts to the hint class */
+.btn-focus-interact.show-hint {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* --- ☀️ LIGHT MODE POPUP SUPPORT --- */
+
+/* 1. Light Overlay & Content Box */
+body.light-mode .hub-overlay {
+    background: rgba(243, 244, 246, 0.8); /* Light gray translucent overlay */
+}
+
+body.light-mode .hub-content {
+    background: #ffffff !important; /* Pure white background */
+    border-color: #d1d5db !important; /* Soft gray border */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 2. Text & Headings */
+body.light-mode .hub-content h2 {
+    color: #1e293b !important; /* Deep Navy for title */
+}
+
+body.light-mode .hub-content p, 
+body.light-mode .hub-content li {
+    color: #334155 !important; /* Slate-700 for readability */
+}
+
+body.light-mode .hub-column {
+    border-color: #e5e7eb !important; /* Subtle column separator */
+}
+
+/* 3. Tech Cards (The inner boxes) */
+body.light-mode .hub-tech-card {
+    background: #f8fafc !important; /* Very light slate fill */
+    border-color: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body.light-mode .hub-tech-card h4 {
+    color: #4338ca !important; /* Deep Indigo for sub-labels */
+}
+
+/* 4. Carousel Refinement */
+body.light-mode .carousel-viewport {
+    border-color: #e5e7eb !important;
+    background: #f1f5f9;
+}
+
+/* Keep the dash container dark so it's visible over light images */
+body.light-mode .dash-container {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 5. Action Buttons */
+body.light-mode .btn-hub-action {
+    background: #4338ca !important; /* Slightly darker indigo for white background */
+    border-color: #3730a3 !important;
+    box-shadow: 0 4px 12px rgba(67, 56, 202, 0.2);
+}
+
+body.light-mode .btn-hub-action:hover {
+    background: #3730a3 !important;
+    box-shadow: 0 8px 20px rgba(67, 56, 202, 0.3);
+}
+
+/* 6. Close Button */
+body.light-mode .close-hub-btn {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+body.light-mode .close-hub-btn:hover {
+    background: #ef4444 !important; /* Red exit on hover */
+    color: white !important;
+    border-color: #dc2626 !important;
+}
+
+
+
+
+
+
+.hub-title-line {
+    height: 1px;
+    /* This matches the subtle white/5 separator exactly */
+    background-color: rgba(255, 255, 255, 0.05); 
+    
+    /* Bypass the 3rem padding: 
+       - Pull left by 3rem to touch the center split line.
+       - Expand width by 6rem to reach the right edge. */
+    margin-left: -3rem; 
+    width: calc(100% + 6rem); 
+    
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Light Mode Support */
+body.light-mode .hub-title-line {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 
 
 
@@ -828,7 +1168,7 @@ body.light-mode #connect span {
 
         .theme-toggle.light .theme-toggle-slider {
             transform: translateX(30px);
-            background: #fbbf24;
+            background: #ffb800;
         }
 
         .theme-toggle.light {
@@ -1463,6 +1803,7 @@ body.light-mode .footer-bottom-bar {
     border-radius: 40px;
     padding: 6rem 1rem;
     text-align: center;
+
     
     /* Center it using absolute/fixed logic for smooth expansion */
     width: 800px; 
@@ -1537,6 +1878,310 @@ body.light-mode .magnetic-btn {
     border-color: rgba(67, 56, 202, 0.2);
 }
 body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !important; }
+
+
+
+
+
+/* --- 🔍 FOCUS MODE STYLES --- */
+
+/* 1. This is the 'Big Screen' layer that stays hidden until you click zoom */
+
+/* --- 🔍 PHYSICAL GROWTH (ZOOM) ANIMATION --- */
+.focus-overlay {
+    position: absolute;
+    inset: 0;
+    background: #101726; 
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* 1. STARTING POSITION: 
+       - 25% is the center of the left column.
+       - 180px is approximately where the image sits from the top. */
+    transform-origin: 25% 210px; 
+    
+    /* 2. STARTING SIZE: 
+       - 0.5 matches the 50% width of the small carousel. */
+    transform: scale(0.1); 
+    
+    opacity: 0;
+    visibility: hidden;
+    
+    /* 3. TRANSITION: 
+       - 'cubic-bezier(0.4, 0, 0.2, 1)' mimics a natural growing object. */
+    transition: 
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        opacity 0.6s ease, 
+        visibility 0.2s;
+}
+
+/* --- THE EXPANSION STATE --- */
+.focus-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1); /* Expands to full popup size */
+}
+
+/* Light Mode support */
+body.light-mode .focus-overlay { background: #ffffff; }
+
+
+
+
+/* 2. When we add the 'active' class via JavaScript, it grows and shows up */
+.focus-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1); /* Grows to full size */
+}
+
+/* 3. This is the [ ] button in the corner */
+.zoom-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Stays above the image */
+    transition: all 0.3s ease;
+}
+.zoom-toggle:hover { 
+    background: #6366f1; /* Turns purple on hover */
+    transform: scale(1.2); 
+}
+
+/* 3. This is the [ ] button in the corner */
+.unzoom-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Stays above the image */
+    transition: all 0.3s ease;
+}
+.unzoom-toggle:hover { 
+    background: #6366f1; /* Turns purple on hover */
+    transform: scale(1.2); 
+}
+
+
+/* --- 🔘 REFINED FULL-VIEW INTERACT BUTTON --- */
+.btn-focus-interact {
+    position: absolute;
+    /* 1. POSITION: Changed from 80px to 50px to sit neatly inside the 80% viewport */
+    bottom: 60px; 
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* 2. DARKER BACKGROUND: Deep Navy/Slate with high opacity */
+    background: rgba(15, 23, 42, 0.85) !important; 
+    
+    /* 3. BORDER: Thin signature indigo border */
+    border: 1px solid rgba(139, 154, 255, 0.4) !important;
+
+    backdrop-filter: blur(12px);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    z-index: 150; /* Ensure it stays above dashes */
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effect for the button itself */
+.btn-focus-interact:hover {
+    background: #6366f1 !important; /* Turns solid Indigo on hover */
+    border-color: #8b9aff !important;
+    box-shadow: 0 0 20px rgba(139, 154, 255, 0.4);
+    transform: translateX(-50%) translateY(-3px); /* Subtle lift */
+}
+
+
+/* Show the button when the user hovers over the Big Screen */
+/* 🎯 Only show UI when the mouse is directly over the 80% viewport */
+.focus-overlay .carousel-viewport:hover .carousel-controls,
+.focus-overlay .carousel-viewport:hover .btn-focus-interact {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 🕵️‍♂️ INSTANT HIDE LOGIC: 
+   When the focus-overlay has the 'active' class, 
+   we hide the underlying carousel controls immediately. */
+
+.hub-content:has(.focus-overlay.active) .zoom-toggle {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+
+
+/* --- Education Container Light Mode --- */
+body.light-mode #about .max-w-4xl.flex-row {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: #cbd5e1 !important;
+}
+
+body.light-mode #about h3 {
+    color: #1e1b4b !important; /* Deep Navy for B.Com title */
+}
+
+body.light-mode #about .text-indigo-400 {
+    color: #4338ca !important; /* Darker Indigo for "Education" label */
+}
+
+body.light-mode #about .text-gray-300, 
+body.light-mode #about .text-gray-400 {
+    color: #475569 !important; /* Darker Slate for DU SOL and Year details */
+}
+
+/* --- Thank You Card / Footer Finale Light Mode --- */
+body.light-mode .thank-you-card h2 {
+    background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 10px rgba(67, 56, 202, 0.15)) !important;
+}
+
+body.light-mode .thank-you-card p {
+    color: #334155 !important; /* Dark Slate for the 'I hope you enjoyed...' text */
+}
+
+
+/* Global fix for the 'Thanks for stopping by' text cutting off */
+.thank-you-card h2 {
+    /* 🛠️ This forces the text container to be taller at the bottom */
+    padding-bottom: 0.15em !important;
+    
+    /* 🛠️ Ensures the gradient mask includes the extra padding */
+    display: inline-block; 
+}
+
+
+/* Styling for the small logos next to the tick */
+.issuer-logo-small {
+    width: 35px; /* Professional small size */
+    height: 35px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.1); /* Subtle background */
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- Certification Card Header Light Mode --- */
+
+/* 1. The Logo Container (#f1f5f9 background for contrast) */
+body.light-mode .issuer-logo-small {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* 2. The Issuer Name Text ("MIS Trainers", "Microsoft", etc.) */
+body.light-mode .certificate-card span.text-white {
+    color: #1e1b4b !important; /* Deep Navy/Indigo to match titles */
+}
+
+/* 3. The "Issued By" small label */
+body.light-mode .certificate-card .text-indigo-400 {
+    color: #4338ca !important; /* Darker Indigo for readability */
+}
+
+/* 4. The Verified Tick Box (Ensuring it looks clean on white) */
+body.light-mode .cert-seal {
+    background-color: #f0fdf4 !important; /* Very light green tint */
+    border-color: #bbf7d0 !important;
+}
+
+
+
+
+
+
+/* --- ⌨️ SQL QUERY SHOWCASE STYLES --- */
+
+/* The Card Container for each Question */
+.query-card {
+    background: rgba(15, 23, 42, 0.6); /* Slightly lighter than bg */
+    border: 1px solid rgba(139, 154, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* The Code Block (VS Code Style) */
+.sql-code-block {
+    background: #0d1117; /* GitHub Dark theme background */
+    padding: 1.25rem;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin: 1rem 0;
+}
+
+/* SQL Syntax Highlighting Colors */
+.sql-k { color: #569cd6; font-weight: bold; } /* Keywords (SELECT, FROM) */
+.sql-f { color: #dcdcaa; } /* Functions (COUNT, ROUND) */
+.sql-s { color: #ce9178; } /* Strings ('Total') */
+.sql-t { color: #4ec9b0; } /* Tables/Columns */
+
+/* Accordion "View Output" Bar */
+.view-output-btn {
+    width: 100%;
+    background: rgba(139, 154, 255, 0.1);
+    border: 1px solid rgba(139, 154, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #8b9aff;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.view-output-btn:hover { background: rgba(139, 154, 255, 0.2); }
+
+/* The Result Image/Table Area (Hidden by default) */
+.result-area {
+    display: none; /* Controlled by JS */
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 1rem;
+}
+.result-area img {
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+
 
 
 
@@ -1814,7 +2459,7 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                         </div>
                         
 
-                        <button onclick="openProjectPopup('project1')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="openProjectPopup('project2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -1844,7 +2489,7 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                             </div>
                         </div>
                         
-                        <button onclick="openProjectPopup('project2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="openProjectPopup('project3')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -1872,7 +2517,7 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                             </div>
                         </div>
                         
-                        <button onclick="openProjectPopup('project2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="openProjectPopup('project4')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -1965,10 +2610,16 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                         <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Issued By</span>
                         <span class="text-sm font-bold text-white body.light-mode:text-slate-900">MIS Trainers</span>
                     </div>
-                    <div class="cert-seal">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                        </svg>
+    <div class="flex items-center gap-3">
+        <!-- 💡 Using the link we found in the inspector -->
+        <img src="Images/mis-logo.png" alt="MIS Logo" class="issuer-logo-small">
+
+        <!-- Your Original Tick Seal -->
+        <div class="cert-seal !relative !top-0 !right-0 !w-11 !h-11">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+</div>
                     </div>
                 </div>
 
@@ -2004,11 +2655,21 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                         <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Issued By</span>
                         <span class="text-sm font-bold text-white body.light-mode:text-slate-900">Microsoft & LinkedIn</span>
                     </div>
-                    <div class="cert-seal">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
+<!-- New container to group logos and tick -->
+<div class="flex items-center gap-3">
+    <!-- Microsoft Logo -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="issuer-logo-small">
+    
+    <!-- LinkedIn Logo -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="issuer-logo-small">
+
+    <!-- Your Original Tick Seal -->
+    <div class="cert-seal !relative !top-0 !right-0 !w-11 !h-11">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+        </svg>
+    </div>
+</div>
                 </div>
 
                 <div class="text-center mb-10">
@@ -2039,7 +2700,7 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                 
 
                
-  <section id="experience" class="pt-12 pb-64 px-6 relative z-10">
+    <section id="experience" class="pt-12 pb-64 px-6 relative z-10">
 <div class="section-bg-text">CAREER PATH</div>
         <div class="max-w-6xl mx-auto">
             <h2 class="section-heading reveal text-center mb-8 md:mb-16">Experience</h2>
@@ -2047,22 +2708,28 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                 <div class="bg-neutral-950 reveal rounded-xl p-4 md:p-6 card-hover border border-gray-700">
                     <div class="mb-3 md:mb-4">
                         <h3 class="text-lg md:text-xl font-semibold text-white mb-4">MIS Analyst (Operations & Reporting)</h3>
-                        <p class="text-gray-400 text-xs md:text-sm mb-3"><strong>Company:</strong> Swastik Trading</p>
-                        <p class="text-gray-400 text-xs md:text-sm mb-3"><strong>Duration:</strong> Dec 2024 - Apr 2025</p>
+
                     </div>
-                    <p class="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">Worked on sales and distribution data using Excel, VBA, and reporting tools to automate order processing, track publisher-wise performance, and support day-to-day business decisions.</p>
+
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6 text-base">
+                    <p class="font-semibold text-indigo-400">Swastik Trading</p>
+                    <span class="hidden sm:block text-gray-600">|</span>
+                    <p class="text-gray-400">Dec 2024 - Apr 2025</p>
+                </div>
+           
+                    <p class="text-gray-300 text-sm md:text-base mb-4 md:mb-6 leading-relaxed">Worked on sales and distribution data using Excel, VBA, and reporting tools to automate order processing, track performance, and support day-to-day business decisions.</p>
                     <div class="sub-card rounded-lg p-3 mb-6 md:mb-8">
-                        <p class="text-xs text-gray-400 mb-3 md:mb-4"><strong>Key Areas:</strong></p>
-                        <div class="flex flex-wrap gap-2">
+                        <p class="text-sm text-gray-400 mb-3 md:mb-4"><strong>Key Areas:</strong></p>
+                        <div class="flex flex-wrap gap-2 ">
                             <span class="skill-bubble text-xs">Data Analysis</span>
                             <span class="skill-bubble text-xs">Business Operations</span>
                             <span class="skill-bubble text-xs">Excel Reporting</span>
-                            <span class="skill-bubble text-xs">Excel Automation</span>
+                            
                         </div>
                     </div>
-                    <button onclick="openExpPopup()" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
-                        View Details
-                    </button>
+                    <button onclick="openExpPopup()" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base mx-auto block">
+    View Details
+</button>
                 </div>
             </div>
         </div>
@@ -2074,7 +2741,7 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
     <div class="max-w-4xl mx-auto text-center relative z-20">
         
         <h2 class="section-heading reveal mb-4">Let's Connect</h2>
-        <p class="text-gray-400 reveal mb-8 text-sm max-w-lg mx-auto">Whether it’s a data project, a dashboard idea, or an opportunity to collaborate, I’m always open to meaningful conversations around <br> data and analytics.</p>
+        <p class="text-gray-400 reveal mb-8 text-base max-w-lg mx-auto">Whether it’s a data project, a dashboard idea, or an opportunity to collaborate, I’m always open to meaningful conversations around <br> data and analytics.</p>
         
         <div class="status-indicator reveal mb-12">
             <div class="status-dot"></div>
@@ -2126,7 +2793,7 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
             <h2 class="text-3xl md:text-4xl font-bold mb-6" style="background: linear-gradient(135deg, #8b9aff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Thanks for stopping by!
             </h2>
-            <p class="text-gray-400 mb-10 text-sm leading-relaxed">
+            <p class="text-gray-400 mb-12 text-sm leading-relaxed">
                 I hope you enjoyed exploring my work as much as I enjoyed building it. Let's create something meaningful together.
             </p>
             <!-- Smaller, centered Resume button -->
@@ -2185,65 +2852,575 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
 
 
 <!-- PROJECT POPUPS -->
-   <div id="project1-popup" class="popup-overlay">
-    <div class="popup-content">
-        <!-- Animated Close Button -->
-        <button onclick="closePopup('project1-popup')" class="close-popup-btn">&times;</button>
-        
-        <!-- ✏️ EDITABLE: Case Study Content -->
-        <div class="case-study-grid">
-            <!-- LEFT COLUMN (50%): Visuals & Original Data Specs -->
-            <div class="flex flex-col">
-                <div class="w-full aspect-video bg-gray-800/40 rounded-xl flex flex-col items-center justify-center border border-white/5 mb-6">
-                    <div class="text-gray-500 text-lg mb-1">Project Cover Image</div>
-                    <div class="text-[10px] text-gray-600">Sales Dashboard Analytics Cover</div>
+
+<!-- ============================================ -->
+<!-- PROJECT 1: NBFC DASHBOARD (SINGLE IMAGE) -->
+<!-- ============================================ -->
+<!-- THE PROJECT HUB MODAL -->
+
+
+<div id="project1-popup" class="hub-overlay">
+    <div class="hub-content">
+        <!-- Close Button -->
+  <button onclick="closeHubPopup('project1-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
+
+        <div class="hub-grid">
+            
+            <!-- ⬅️ LEFT COLUMN: Technical Specs -->
+            <div class="hub-column border-r border-white/5 space-y-8">
+                
+                <!-- 1. 16:9 Carousel Viewport -->
+                <div class="carousel-viewport" id="viewport-p1">
+                    <div class="carousel-track" id="track-p1">
+                        <!-- 🔧 NOTE: To make infinite loop, the last slide must be a CLONE of the first -->
+
+                        <img src="Images/Tooltip.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/Finedge.jpg" class="carousel-slide">
+                        <img src="Images/filter.jpg" class="carousel-slide">
+                        <img src="Images/Tooltip.jpg" class="carousel-slide">
+                        <img src="Images/Finedge.jpg" class="carousel-slide"> <!-- CLONE -->
+                    </div>
+                    
+
+
+
+                    <!-- Controls (Hidden on idle) -->
+                    <div class="carousel-controls">
+                        <button class="carousel-arrow arrow-left" onclick="manualMove('p1', -1)">❮</button>
+                        <button class="carousel-arrow arrow-right" onclick="manualMove('p1', 1)">❯</button>
+
+<!-- ✅ ADD THIS BUTTON inside your existing <div class="carousel-controls"> -->
+<button class="zoom-toggle" onclick="toggleFocus('p1')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+    </svg>
+</button>
+
+                        <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    
+                        </div>
+                    </div>
                 </div>
 
-                <button class="w-full py-3 rounded-lg glow-button text-white font-semibold text-sm tracking-wide mb-8">
-                    INTERACT WITH LIVE DASHBOARD
-                </button>
+                <!-- 2. Primary Action Button -->
+<a href="https://app.powerbi.com/view?r=eyJrIjoiNTAyY2NlNGItNmE1Ny00MDJlLWI0ZTQtNDAwMDcyNWUxMzE1IiwidCI6ImQ4MTIxYzJhLTEzMzktNDk2NC1hN2NmLWMyZjU5OTAxYzBlNiJ9" target="_blank" rel="noopener noreferrer" class="btn-hub-action">
+    Interact with Live Dashboard
+</a>
 
-                <div class="bg-white/5 p-5 rounded-xl border border-white/10">
-                    <h4 class="font-bold text-blue-400 mb-3">Data & Structure</h4>
-                    <ul class="space-y-2">
-                        <li>• <strong>Data Source:</strong> SQL Server database with 3+ years of historical sales data</li>
-                        <li>• <strong>Data Volume:</strong> 500K+ transaction records across multiple regions</li>
-                        <li>• <strong>Key Tables:</strong> Sales transactions, customer demographics, product catalog, regional data</li>
-                        <li>• <strong>Update Frequency:</strong> Real-time data refresh every 15 minutes</li>
-                    </ul>
+                <!-- 3. Data & Structure Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Data & Structure</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Each LI is a flex container for perfect alignment -->
+    <li class="flex items-start gap-3">
+        <!-- 🎨 Bullet color changed to Indigo here -->
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Source:</strong> The dataset was created from scratch using AI (Python) to simulate a realistic Financial Institution's portfolio.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Volume:</strong> Over 5000+ total records analyzed.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Timeline:</strong> Simulated data covering approximately 3 years (2022-2025).</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Key Fields:</strong> Disbursement Amount, Interest Rate, Loan Status, Loan Product & Purpose, Maturity Date, Outstanding Balance, Customer Demographics</span>
+    </li>
+
+</ul>
+
+
+                </div>
+
+                <!-- 4. Tools Used Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Tools Used</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Power BI -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Power BI:</strong> For advanced data modeling and DAX visualization.</span>
+    </li>
+
+    <!-- SQL Server -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>SQL Server:</strong> For data extraction and complex query joining.</span>
+    </li>
+
+    <!-- MS Excel -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>MS Excel:</strong> For initial data validation and stakeholder auditing.</span>
+    </li>
+
+</ul>
+
+
+
+
+<!-- ✅ PASTE THIS BLOCK after the <div class="hub-grid">...</div> ends -->
+<div id="focus-p1" class="focus-overlay">
+    <!-- Minimize Button: Clicking this closes the big view -->
+<!-- Minimize Button (Four corners pointing inward) -->
+<button class="unzoom-toggle" onclick="toggleFocus('p1')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <!-- Top Left -->
+        <path d="M3 8h5V3M3 3l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Top Right -->
+        <path d="M21 8h-5V3M21 3l-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Left -->
+        <path d="M3 16h5v5M3 21l5-5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Right -->
+        <path d="M21 16h-5v5M21 21l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
+    <!-- The Theatre Screen (The Big Carousel) -->
+    <div class="carousel-viewport !aspect-video !w-[80%]">
+        <!-- 🔧 IMPORTANT: This ID ends with '-focus' so JS can find it -->
+        <div class="carousel-track" id="track-p1-focus">
+            <!-- PASTE THE EXACT SAME IMAGE LIST HERE AS YOUR SMALL VIEW -->
+                        <img src="Images/Tooltip.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/Finedge.jpg" class="carousel-slide">
+                        <img src="Images/filter.jpg" class="carousel-slide">
+                        <img src="Images/Tooltip.jpg" class="carousel-slide">
+                        <img src="Images/Finedge.jpg" class="carousel-slide"> <!-- CLONE -->
+        </div>
+        
+        <!-- Controls for the Big View -->
+        <div class="carousel-controls">
+            <button class="carousel-arrow arrow-left" onclick="manualMove('p1', -1)">❮</button>
+            <button class="carousel-arrow arrow-right" onclick="manualMove('p1', 1)">❯</button>
+ <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    
+                        
+            </div>
+        </div>
+
+        <!-- The Floating Action Link -->
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiNTAyY2NlNGItNmE1Ny00MDJlLWI0ZTQtNDAwMDcyNWUxMzE1IiwidCI6ImQ4MTIxYzJhLTEzMzktNDk2NC1hN2NmLWMyZjU5OTAxYzBlNiJ9" target="_blank" class="btn-focus-interact">Interact with Live Dashboard</a>
+    </div>
+</div>
+
+
+
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN (50%): Original Narrative -->
-            <div class="flex flex-col">
+            <!-- ➡️ RIGHT COLUMN: Business Narrative -->
+            <div class="hub-column space-y-10">
+                
+<!-- Project Title -->
                 <h2 class="text-3xl font-bold mb-6" style="background: linear-gradient(135deg, #8b9aff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    Sales Dashboard Analytics
+                    FinEdge Finance - Power BI
                 </h2>
 
-                <section class="mb-8">
-                    <h3 class="font-bold text-blue-400">Problem Statement</h3>
-                    <p>The sales team lacked real-time visibility into performance metrics, making it difficult to identify trends, track KPIs, and make data-driven decisions. Manual reporting processes were time-consuming and often outdated, leading to missed opportunities and inefficient resource allocation.</p>
-                </section>
+<!-- THE THIN SEPARATOR LINE -->
+<div class="hub-title-line"></div>
 
-                <section class="mb-8">
-                    <h3 class="font-bold text-blue-400">Tools Used</h3>
-                    <ul class="space-y-2">
-                        <li>• <strong>Power BI:</strong> Dashboard creation and data visualization</li>
-                        <li>• <strong>SQL Server:</strong> Data extraction and transformation</li>
-                        <li>• <strong>Excel:</strong> Initial data analysis and validation</li>
-                    </ul>
-                </section>
 
+                <!-- Problem Statement -->
                 <section>
-                    <h3 class="font-bold text-blue-400">Solution Approach</h3>
-                    <ul class="space-y-2">
-                        <li>• Conducted stakeholder interviews to identify key metrics and requirements</li>
-                        <li>• Designed data model with optimized relationships for fast query performance</li>
-                        <li>• Created interactive visualizations with drill-down capabilities</li>
-                        <li>• Implemented automated data refresh and alert systems</li>
-                        <li>• Conducted user training and gathered feedback for iterative improvements</li>
-                    </ul>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Problem Statement</h3>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        FinEdge Finance is a fictitious financial services company created for analytical practice. The purpose of this project was to analyze loan portfolio data to understand risk distribution, maturity patterns, and overall portfolio health. Raw financial data can be complex and difficult to interpret, requiring structured analysis and clear visualization to support decision-making.
+                    </p>
                 </section>
+
+                <!-- Solution Approach -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Solution Approach</h3>
+
+<ul class="text-base text-gray-300 space-y-4">
+    
+    <!-- Each LI is now a flex container -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Cleaned and organized loan portfolio data for analysis.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Built a structured data model to analyze loans by status, tenure, and risk.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Created KPIs to track total loans, outstanding amounts, and risk segments.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Designed visuals to analyze maturity buckets and portfolio composition.</span>
+    </li>
+
+<li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Focused on clarity, consistency, and financial storytelling.</span>
+    </li>
+
+</ul>
+                </section>
+
+                <!-- Key Findings -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Key Findings & Learnings</h3>
+
+
+<ul class="text-base text-gray-300 space-y-4">
+    <!-- Point 1 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Identified concentration of loans across specific risk categories.</span>
+    </li>
+
+    <!-- Point 2 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Highlighted patterns in loan status and portfolio exposure.</span>
+    </li>
+
+    <!-- Point 3 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Observed distribution of loans across different maturity periods.</span>
+    </li>
+
+    <!-- Point 4 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Learned financial KPI design and domain-specific metrics.</span>
+    </li>
+
+    <!-- Point 5 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Improved ability to present complex financial data clearly.</span>
+    </li>
+
+</ul>
+
+
+                </section>
+
+                <!-- Documentation Button -->
+                <div class="pt-10">
+                    <a href="https://vivekraturi-dataanalyst.github.io/NBFC-Power-bi-dashboard/" target="_blank" class="btn-hub-action">Go to Project Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- ============================================ -->
+<!-- PROJECT 2: -->
+<!-- ============================================ -->
+<!-- THE PROJECT HUB MODAL -->
+
+
+<div id="project2-popup" class="hub-overlay">
+    <div class="hub-content">
+        <!-- Close Button -->
+ <button onclick="closeHubPopup('project2-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
+
+        <div class="hub-grid">
+            
+            <!-- ⬅️ LEFT COLUMN: Technical Specs -->
+            <div class="hub-column border-r border-white/5 space-y-8">
+                
+                <!-- 1. 16:9 Carousel Viewport -->
+                <div class="carousel-viewport" id="viewport-p2">
+                    <div class="carousel-track" id="track-p2">
+                        <!-- 🔧 NOTE: To make infinite loop, the last slide must be a CLONE of the first -->
+
+                        <img src="Images/STPage4.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/sharktank.jpg" class="carousel-slide">
+                        <img src="Images/STPage2.jpg" class="carousel-slide">
+                        <img src="Images/STPage3.jpg" class="carousel-slide">
+			<img src="Images/STPage4.jpg" class="carousel-slide">
+                        <img src="Images/sharktank.jpg" class="carousel-slide"> <!-- CLONE -->
+                    </div>
+                    
+
+
+
+                    <!-- Controls (Hidden on idle) -->
+                    <div class="carousel-controls">
+                        <button class="carousel-arrow arrow-left" onclick="manualMove('p2', -1)">❮</button>
+                        <button class="carousel-arrow arrow-right" onclick="manualMove('p2', 1)">❯</button>
+
+<!-- ✅ ADD THIS BUTTON inside your existing <div class="carousel-controls"> -->
+<button class="zoom-toggle" onclick="toggleFocus('p2')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+    </svg>
+</button>
+
+                        <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Primary Action Button -->
+<a href="https://app.powerbi.com/view?r=eyJrIjoiNTdiNzhjNDctOThkMC00MWFkLThlZjEtZTNiNzM4NWNlMzMxIiwidCI6ImQ4MTIxYzJhLTEzMzktNDk2NC1hN2NmLWMyZjU5OTAxYzBlNiJ9" target="_blank" rel="noopener noreferrer" class="btn-hub-action">
+    Interact with Live Dashboard
+</a>
+
+                <!-- 3. Data & Structure Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Data & Structure</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Each LI is a flex container for perfect alignment -->
+    <li class="flex items-start gap-3">
+        <!-- 🎨 Bullet color changed to Indigo here -->
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Source:</strong> The dataset was taken from Kaggle – Shark Tank India Dataset</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Volume:</strong> The raw Kaggle dataset contained 80 fields/columns and 630+ records.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Timeline:</strong> Data spanning 5 seasons across several years of the show.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Key Fields:</strong> Startup details, Deal-related fields, Sharks' investment columns, Pitcher demographics, Industry information, Multiple financial fields</span>
+    </li>
+
+</ul>
+
+
+                </div>
+
+                <!-- 4. Tools Used Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Tools Used</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Power BI -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Power BI:</strong> For advanced data modeling and DAX visualization.</span>
+    </li>
+
+    <!-- SQL Server -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>SQL Server:</strong> For data extraction and complex query joining.</span>
+    </li>
+
+    <!-- MS Excel -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>MS Excel:</strong> For initial data validation and stakeholder auditing.</span>
+    </li>
+
+</ul>
+
+<!-- ✅ PASTE THIS BLOCK after the <div class="hub-grid">...</div> ends -->
+<div id="focus-p2" class="focus-overlay">
+    <!-- Minimize Button: Clicking this closes the big view -->
+<!-- Minimize Button (Four corners pointing inward) -->
+<button class="unzoom-toggle" onclick="toggleFocus('p2')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <!-- Top Left -->
+        <path d="M3 8h5V3M3 3l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Top Right -->
+        <path d="M21 8h-5V3M21 3l-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Left -->
+        <path d="M3 16h5v5M3 21l5-5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Right -->
+        <path d="M21 16h-5v5M21 21l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
+    <!-- The Theatre Screen (The Big Carousel) -->
+    <div class="carousel-viewport !aspect-video !w-[80%]">
+        <!-- 🔧 IMPORTANT: This ID ends with '-focus' so JS can find it -->
+        <div class="carousel-track" id="track-p2-focus">
+            <!-- PASTE THE EXACT SAME IMAGE LIST HERE AS YOUR SMALL VIEW -->
+                        <img src="Images/STPage4.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/sharktank.jpg" class="carousel-slide">
+                        <img src="Images/STPage2.jpg" class="carousel-slide">
+                        <img src="Images/STPage3.jpg" class="carousel-slide">
+			<img src="Images/STPage4.jpg" class="carousel-slide">
+                        <img src="Images/sharktank.jpg" class="carousel-slide"> <!-- CLONE -->
+        </div>
+        
+        <!-- Controls for the Big View -->
+        <div class="carousel-controls">
+            <button class="carousel-arrow arrow-left" onclick="manualMove('p2', -1)">❮</button>
+            <button class="carousel-arrow arrow-right" onclick="manualMove('p2', 1)">❯</button>
+ <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    
+                        
+            </div>
+        </div>
+
+        <!-- The Floating Action Link -->
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiNTdiNzhjNDctOThkMC00MWFkLThlZjEtZTNiNzM4NWNlMzMxIiwidCI6ImQ4MTIxYzJhLTEzMzktNDk2NC1hN2NmLWMyZjU5OTAxYzBlNiJ9" target="_blank" class="btn-focus-interact">Interact with Live Dashboard</a>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+
+            <!-- ➡️ RIGHT COLUMN: Business Narrative -->
+            <div class="hub-column space-y-10">
+                
+<!-- Project Title -->
+                <h2 class="text-3xl font-bold mb-6" style="background: linear-gradient(135deg, #8b9aff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Shark Tank - Power BI
+                </h2>
+
+<!-- THE THIN SEPARATOR LINE -->
+<div class="hub-title-line"></div>
+
+
+                <!-- Problem Statement -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Problem Statement</h3>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Shark Tank India is a popular business reality show featuring startup pitches and investor deals across multiple seasons. The goal of this project was to analyze publicly available show data to uncover investment patterns, shark-wise behavior, and industry trends. The data existed in raw, unstructured formats, making it challenging to derive meaningful insights without proper modeling and visualization
+                    </p>
+                </section>
+
+                <!-- Solution Approach -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Solution Approach</h3>
+
+<ul class="text-base text-gray-300 space-y-4">
+    
+    <!-- Each LI is now a flex container -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Structured raw Shark Tank India data into analytical tables..</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Created calculated measures to track investments, deal counts, and success rates.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Designed interactive visuals for shark-wise, industry-wise, and season-wise analysis.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Implemented slicers to enable dynamic exploration of the data.</span>
+    </li>
+
+<li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Focused on storytelling through clear KPIs and comparisons.</span>
+    </li>
+
+</ul>
+                </section>
+
+                <!-- Key Findings -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Key Findings & Learnings</h3>
+
+
+<ul class="text-base text-gray-300 space-y-4">
+    <!-- Point 1 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Identified industries receiving the highest number of deals and investments.</span>
+    </li>
+
+    <!-- Point 2 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Observed differences in investment behavior among individual sharks.</span>
+    </li>
+
+    <!-- Point 3 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Highlighted trends in deal success rates across seasons.</span>
+    </li>
+
+    <!-- Point 4 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Learned effective use of KPIs for summarizing large datasets.</span>
+    </li>
+
+    <!-- Point 5 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Improved dashboard storytelling and layout design skills.</span>
+    </li>
+
+</ul>
+
+
+                </section>
+
+                <!-- Documentation Button -->
+                <div class="pt-10">
+                    <a href="https://vivekraturi-dataanalyst.github.io/Shark-Tank-India-Power-BI-Project/" target="_blank" class="btn-hub-action">Go to Project Page</a>
+                </div>
             </div>
         </div>
     </div>
@@ -2255,25 +3432,516 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
 
 
 
-    <div id="project2-popup" class="popup-overlay">
-        <div class="popup-content">
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex-1"></div>
-                <h3 class="text-2xl font-bold text-blue-400 text-center flex-1">Customer Behavior Analysis</h3>
-                <div class="flex-1 flex justify-end">
-                    <button onclick="closePopup('project2-popup')" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+
+<!-- ============================================ -->
+<!-- PROJECT 4: -->
+<!-- ============================================ -->
+<!-- THE PROJECT HUB MODAL -->
+
+
+<div id="project4-popup" class="hub-overlay">
+    <div class="hub-content">
+        <!-- Close Button -->
+<button onclick="closeHubPopup('project4-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
+
+        <div class="hub-grid">
+            
+            <!-- ⬅️ LEFT COLUMN: Technical Specs -->
+            <div class="hub-column border-r border-white/5 space-y-8">
+                
+                <!-- 1. 16:9 Carousel Viewport -->
+                <div class="carousel-viewport" id="viewport-p4">
+                    <div class="carousel-track" id="track-p4">
+                        <!-- 🔧 NOTE: To make infinite loop, the last slide must be a CLONE of the first -->
+
+                        <img src="Images/BTPage5.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/BTPage1.jpg" class="carousel-slide">
+                        <img src="Images/BTPage2.jpg" class="carousel-slide">
+                        <img src="Images/BTPage3.jpg" class="carousel-slide">
+			<img src="Images/BTPage4.jpg" class="carousel-slide">
+			<img src="Images/BTPage5.jpg" class="carousel-slide">
+                        <img src="Images/BTPage1.jpg" class="carousel-slide"> <!-- CLONE -->
+                    </div>
+                    
+
+
+
+                    <!-- Controls (Hidden on idle) -->
+                    <div class="carousel-controls">
+                        <button class="carousel-arrow arrow-left" onclick="manualMove('p4', -1)">❮</button>
+                        <button class="carousel-arrow arrow-right" onclick="manualMove('p4', 1)">❯</button>
+
+<!-- ✅ ADD THIS BUTTON inside your existing <div class="carousel-controls"> -->
+<button class="zoom-toggle" onclick="toggleFocus('p4')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+    </svg>
+</button>
+
+                        <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Primary Action Button -->
+                                <a href="https://app.powerbi.com/view?r=eyJrIjoiYmYwNDk5NzAtMzNjYy00NzI1LTg1NTAtNGU2ZGIzNzc2OGYyIiwidCI6IjY5MWY3Y2RmLTg3ODgtNDhjOC04YjBmLWRjNzljODRiODJlYSJ9" target="_blank" rel="noopener noreferrer" class="btn-hub-action">
+    Interact with Live Dashboard
+</a>
+
+                <!-- 3. Data & Structure Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Data & Structure</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Each LI is a flex container for perfect alignment -->
+    <li class="flex items-start gap-3">
+        <!-- 🎨 Bullet color changed to Indigo here -->
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Source:</strong> Custom dataset created to simulate Boat Lifestyle e-commerce sales.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Volume:</strong> ~15000 total rows across all tables (8,000+ in OrderDetails alone).</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Timeline:</strong> 3 months of Simulated data (Jan–Mar 2025).</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Key Tables:</strong> Customers, Products, Orders, OrderDetails, Returns, Reviews.</span>
+    </li>
+
+</ul>
+
+
+                </div>
+
+                <!-- 4. Tools Used Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Tools Used</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Power BI -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Power BI:</strong> For advanced data modeling and DAX visualization.</span>
+    </li>
+
+    <!-- SQL Server -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>SQL Server:</strong> For data extraction and complex query joining.</span>
+    </li>
+
+    <!-- MS Excel -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>MS Excel:</strong> For initial data validation and stakeholder auditing.</span>
+    </li>
+
+</ul>
+
+<!-- ✅ PASTE THIS BLOCK after the <div class="hub-grid">...</div> ends -->
+<div id="focus-p4" class="focus-overlay">
+    <!-- Minimize Button: Clicking this closes the big view -->
+<!-- Minimize Button (Four corners pointing inward) -->
+<button class="unzoom-toggle" onclick="toggleFocus('p4')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <!-- Top Left -->
+        <path d="M3 8h5V3M3 3l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Top Right -->
+        <path d="M21 8h-5V3M21 3l-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Left -->
+        <path d="M3 16h5v5M3 21l5-5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Right -->
+        <path d="M21 16h-5v5M21 21l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
+    <!-- The Theatre Screen (The Big Carousel) -->
+    <div class="carousel-viewport !aspect-video !w-[80%]">
+        <!-- 🔧 IMPORTANT: This ID ends with '-focus' so JS can find it -->
+        <div class="carousel-track" id="track-p4-focus">
+            <!-- PASTE THE EXACT SAME IMAGE LIST HERE AS YOUR SMALL VIEW -->
+                        <img src="Images/BTPage5.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/BTPage1.jpg" class="carousel-slide">
+                        <img src="Images/BTPage2.jpg" class="carousel-slide">
+                        <img src="Images/BTPage3.jpg" class="carousel-slide">
+			<img src="Images/BTPage4.jpg" class="carousel-slide">
+			<img src="Images/BTPage5.jpg" class="carousel-slide">
+                        <img src="Images/BTPage1.jpg" class="carousel-slide"> <!-- CLONE -->
+        </div>
+        
+        <!-- Controls for the Big View -->
+        <div class="carousel-controls">
+            <button class="carousel-arrow arrow-left" onclick="manualMove('p4', -1)">❮</button>
+            <button class="carousel-arrow arrow-right" onclick="manualMove('p4', 1)">❯</button>
+ <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    
+                        
+            </div>
+        </div>
+
+        <!-- The Floating Action Link -->
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiYmYwNDk5NzAtMzNjYy00NzI1LTg1NTAtNGU2ZGIzNzc2OGYyIiwidCI6IjY5MWY3Y2RmLTg3ODgtNDhjOC04YjBmLWRjNzljODRiODJlYSJ9" target="_blank" class="btn-focus-interact">Interact with Live Dashboard</a>
+    </div>
+</div>
+
                 </div>
             </div>
-            
-            <p class="text-gray-300 mb-6 text-center">An in-depth analysis of customer purchasing patterns and behavior to optimize marketing strategies. This project identified high-value customers and helped reduce churn rate by 15% through targeted retention campaigns.</p>
-            
-            <div class="text-center mb-8">
-                <button class="px-8 py-3 rounded-lg glow-button text-white font-semibold">
-                    Interact with Live Dashboard
-                </button>
+
+            <!-- ➡️ RIGHT COLUMN: Business Narrative -->
+            <div class="hub-column space-y-10">
+                
+<!-- Project Title -->
+                <h2 class="text-3xl font-bold mb-6" style="background: linear-gradient(135deg, #8b9aff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Boat Lifestyle - Power BI
+                </h2>
+
+<!-- THE THIN SEPARATOR LINE -->
+<div class="hub-title-line"></div>
+
+
+                <!-- Problem Statement -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Problem Statement</h3>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Boat Lifestyle is a large Indian e-commerce brand operating across multiple product categories and regions. The objective of this project was to analyze the data to understand revenue trends, product demand, and regional performance, and to design a dashboard that demonstrates how sales insights can be effectively generated for business decision-making.
+                    </p>
+                </section>
+
+                <!-- Solution Approach -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Solution Approach</h3>
+
+<ul class="text-base text-gray-300 space-y-4">
+    
+    <!-- Each LI is now a flex container -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Cleaned and transformed raw sales data using Power Query.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Designed a structured data model to support efficient analysis.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Built interactive Power BI dashboards with slicers for time, product, and region.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Created key KPIs to track revenue, quantity sold, and growth trends.</span>
+    </li>
+
+<li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Ensured clarity and usability for non-technical users.</span>
+    </li>
+
+</ul>
+                </section>
+
+                <!-- Key Findings -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Key Findings & Learnings</h3>
+
+
+<ul class="text-base text-gray-300 space-y-4">
+    <!-- Point 1 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Identified top-performing products contributing the majority of revenue.</span>
+    </li>
+
+    <!-- Point 2 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Observed seasonal sales trends impacting monthly performance.</span>
+    </li>
+
+    <!-- Point 3 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Discovered regional variations in demand across product categories.</span>
+    </li>
+
+    <!-- Point 4 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Learned the importance of clean data modeling for responsive dashboards.</span>
+    </li>
+
+    <!-- Point 5 -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-blue-400">•</span>
+        <span>Improved understanding of translating business questions into visuals.</span>
+    </li>
+
+</ul>
+
+
+                </section>
+
+                <!-- Documentation Button -->
+                <div class="pt-10">
+                    <a href="#" target="_blank" class="btn-hub-action">Go to Project Page</a>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+<!-- THE PROJECT HUB MODAL -->
+
+
+<div id="project3-popup" class="hub-overlay">
+    <div class="hub-content">
+        <!-- Close Button -->
+<button onclick="closeHubPopup('project3-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
+
+        <div class="hub-grid">
+            
+            <!-- ⬅️ LEFT COLUMN: Technical Specs -->
+            <div class="hub-column border-r border-white/5 space-y-8">
+                
+                <!-- 1. 16:9 Carousel Viewport -->
+                <div class="carousel-viewport" id="viewport-p3">
+                    <div class="carousel-track" id="track-p3">
+                        <!-- 🔧 NOTE: To make infinite loop, the last slide must be a CLONE of the first -->
+
+                        <img src="Images/6.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/1.jpg" class="carousel-slide">
+                        <img src="Images/2.jpg" class="carousel-slide">
+                        <img src="Images/3.jpg" class="carousel-slide">
+			<img src="Images/4.jpg" class="carousel-slide">
+			<img src="Images/5.jpg" class="carousel-slide">
+			<img src="Images/6.jpg" class="carousel-slide">
+                        <img src="Images/1.jpg" class="carousel-slide"> <!-- CLONE -->
+                    </div>
+                    
+
+
+
+                    <!-- Controls (Hidden on idle) -->
+                    <div class="carousel-controls">
+                        <button class="carousel-arrow arrow-left" onclick="manualMove('p3', -1)">❮</button>
+                        <button class="carousel-arrow arrow-right" onclick="manualMove('p3', 1)">❯</button>
+
+<!-- ✅ ADD THIS BUTTON inside your existing <div class="carousel-controls"> -->
+<button class="zoom-toggle" onclick="toggleFocus('p3')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+    </svg>
+</button>
+
+                        <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Primary Action Button -->
+                                <a href="https://vivekraturi-dataanalyst.github.io/SQLProject/#query-showcase" target="_blank" rel="noopener noreferrer" class="btn-hub-action">
+    View All Queries
+</a>
+
+                <!-- 3. Data & Structure Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Data & Structure</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Each LI is a flex container for perfect alignment -->
+    <li class="flex items-start gap-3">
+        <!-- 🎨 Bullet color changed to Indigo here -->
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Source:</strong> Custom dataset created to simulate Boat Lifestyle e-commerce sales.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Data Volume:</strong> ~15000 total rows across all tables (8,000+ in OrderDetails alone).</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Timeline:</strong> 3 months of Simulated data (Jan–Mar 2025).</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Key Tables:</strong> Customers, Products, Orders, OrderDetails, Returns, Reviews.</span>
+    </li>
+
+</ul>
+
+
+                </div>
+
+                <!-- 4. Tools Used Container -->
+                <div class="hub-tech-card">
+                    <h4 class="text-blue-400 font-bold text-[20px] mb-4">Tools Used</h4>
+
+
+<ul class="text-[16px] text-gray-300 space-y-4">
+    
+    <!-- Power BI -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>Power BI:</strong> For advanced data modeling and DAX visualization.</span>
+    </li>
+
+    <!-- SQL Server -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>SQL Server:</strong> For data extraction and complex query joining.</span>
+    </li>
+
+    <!-- MS Excel -->
+    <li class="flex items-start gap-3">
+        <span class="flex-shrink-0 text-indigo-400 font-bold">•</span>
+        <span><strong>MS Excel:</strong> For initial data validation and stakeholder auditing.</span>
+    </li>
+
+</ul>
+
+<!-- ✅ PASTE THIS BLOCK after the <div class="hub-grid">...</div> ends -->
+<div id="focus-p3" class="focus-overlay">
+    <!-- Minimize Button: Clicking this closes the big view -->
+<!-- Minimize Button (Four corners pointing inward) -->
+<button class="unzoom-toggle" onclick="toggleFocus('p3')">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <!-- Top Left -->
+        <path d="M3 8h5V3M3 3l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Top Right -->
+        <path d="M21 8h-5V3M21 3l-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Left -->
+        <path d="M3 16h5v5M3 21l5-5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Bottom Right -->
+        <path d="M21 16h-5v5M21 21l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
+    <!-- The Theatre Screen (The Big Carousel) -->
+    <div class="carousel-viewport !aspect-video !w-[80%]">
+        <!-- 🔧 IMPORTANT: This ID ends with '-focus' so JS can find it -->
+        <div class="carousel-track" id="track-p3-focus">
+            <!-- PASTE THE EXACT SAME IMAGE LIST HERE AS YOUR SMALL VIEW -->
+                        <img src="Images/6.jpg" class="carousel-slide"> <!-- CLONE -->
+                        <img src="Images/1.jpg" class="carousel-slide">
+                        <img src="Images/2.jpg" class="carousel-slide">
+                        <img src="Images/3.jpg" class="carousel-slide">
+			<img src="Images/4.jpg" class="carousel-slide">
+			<img src="Images/5.jpg" class="carousel-slide">
+			<img src="Images/6.jpg" class="carousel-slide">
+                        <img src="Images/1.jpg" class="carousel-slide"> <!-- CLONE -->
+                    </div>
+        
+        <!-- Controls for the Big View -->
+        <div class="carousel-controls">
+            <button class="carousel-arrow arrow-left" onclick="manualMove('p3', -1)">❮</button>
+            <button class="carousel-arrow arrow-right" onclick="manualMove('p3', 1)">❯</button>
+ <div class="dash-container">
+                            <!-- Dashes (Must match number of unique slides) -->
+                            <div class="dash-item active"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    <div class="dash-item"></div>
+			    
+                        
+            </div>
+        </div>
+
+        <!-- The Floating Action Link -->
+        <a href="https://vivekraturi-dataanalyst.github.io/SQLProject/#query-showcase" target="_blank" class="btn-focus-interact">View All Queries</a>
+    </div>
+</div>
+
+                </div>
+            </div>
+
+            <!-- ➡️ RIGHT COLUMN: Business Narrative -->
+            <div class="hub-column space-y-10">
+                
+<!-- Project Title -->
+                <h2 class="text-3xl font-bold mb-6" style="background: linear-gradient(135deg, #8b9aff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Boat Lifestyle - SQL Project
+                </h2>
+
+<!-- THE THIN SEPARATOR LINE -->
+<div class="hub-title-line"></div>
+
+
+                <!-- Problem Statement -->
+                <section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Objective</h3>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Boat Lifestyle is a large Indian e-commerce brand operating across multiple product categories and regions. This project focuses on solving real-world business problems using SQL. The complete project includes <strong>25+ SQL queries</strong>, each designed to answer practical business questions related to sales performance, customer behavior, product analysis, and operational insights.            </p>
+                </section>
+
+
+<section>
+                    <h3 class="text-blue-400 font-bold text-[25px] mb-4">Note: </h3>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                       This is a brief snapshot of the overall project. To maintain clarity, only the selected key queries are showcased here. The complete set of 25+ business solutions, including easy, intermediate and advanced SQL queries, can be explored in the Project Page.            </p>
+                </section>
+
+               
+
+
+
+
+
+                <!-- Documentation Button -->
+                <div class="pt-10">
+                    <a href="https://vivekraturi-dataanalyst.github.io/SQLProject/" target="_blank" class="btn-hub-action">Go to Project Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -2289,7 +3957,13 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
     <!-- Inline max-height and overflow:hidden is a 'hard lock' to stop scrolling -->
     <div class="popup-content" style="max-height: 580px; overflow: hidden; display: block;">
         <!-- Close button stays sticky at top right -->
-        <button onclick="closePopup('cert1-popup')" class="close-popup-btn">&times;</button>
+        <button onclick="closeHubPopup('cert1-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
+
         
         <!-- ✏️ EDITABLE: Case Study Content -->
         <div class="case-study-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 3rem; height: 100%;">
@@ -2365,7 +4039,12 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
     <!-- Inline max-height and overflow:hidden is a 'hard lock' to stop scrolling -->
     <div class="popup-content" style="max-height: 580px; overflow: hidden; display: block;">
         <!-- Close button stays sticky at top right -->
-        <button onclick="closePopup('cert2-popup')" class="close-popup-btn">&times;</button>
+        <button onclick="closeHubPopup('cert2-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
         
         <!-- ✏️ EDITABLE: Case Study Content -->
         <div class="case-study-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 3rem; height: 100%;">
@@ -2436,7 +4115,12 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
     <div class="popup-content" style="height: 600px; max-height: 600px; overflow: hidden; display: block;">
         
         <!-- Animated Close Button -->
-        <button onclick="closePopup('exp-popup')" class="close-popup-btn">&times;</button>
+        <button onclick="closeHubPopup('exp-popup')" class="close-popup-btn">
+    <!-- Geometric SVG X is perfectly centered -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
         
         <!-- ✏️ EDITABLE: Case Study Content -->
         <div class="case-study-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 3rem; height: 100%;">
@@ -2446,10 +4130,14 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                 
                 <!-- 1. Header: Logo and Company Info side-by-side -->
                 <div style="display: flex; align-items: center; gap: 1.25rem;">
+
                     <!-- Company Logo Placeholder: Replace 'src' with your GitHub Pages image link later -->
-                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-lg">
-                        <img src="your-company-logo-link.jpg" alt="Company Logo" class="w-full h-full object-cover opacity-80">
-                    </div>
+    <div class="w-16 h-16 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0 shadow-lg">
+        <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <!-- Professional Building/Office Path -->
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+        </svg>
+    </div>
                     <div class="flex flex-col">
                         <h2 class="text-2xl font-bold text-white leading-tight">Swastik Trading</h2>
                         <p class="text-indigo-400 font-semibold text-sm">MIS Analyst (Operations & Reporting)</p>
@@ -2463,10 +4151,10 @@ body.light-mode .magnetic-btn:hover { background: #4338ca; color: white !importa
                 <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
                     <h4 class="font-bold text-blue-400 mb-4 uppercase text-[9px] tracking-widest border-b border-white/5 pb-2">Employment Record</h4>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Duration</span><span class="text-[13px] text-white">Dec 24 - Apr 2025</span></div>
-                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Location</span><span class="text-[13px] text-white">Dwarka, New Delhi</span></div>
-                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Work Mode</span><span class="text-[13px] text-white">On-site</span></div>
-                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Core Domain</span><span class="text-[13px] text-white">Distribution/Logistics</span></div>
+                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Duration</span><span class="text-[13.5px] text-white">Dec 24 - Apr 2025</span></div>
+                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Location</span><span class="text-[13.5px] text-white">Dwarka, New Delhi</span></div>
+                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Work Mode</span><span class="text-[13.5px] text-white">On-site</span></div>
+                        <div class="flex flex-col"><span class="text-[13px] text-gray-500 uppercase font-black tracking-widest">Core Domain</span><span class="text-[13.5px] text-white">Distribution/Logistics</span></div>
                     </div>
                 </div>
 
@@ -2618,6 +4306,243 @@ if (progress >= 100) {
 window.addEventListener('load', startLoader);
 
 
+
+
+
+
+
+
+/* ========================================= */
+/*       HUB POPUP & CAROUSEL ENGINE         */
+/* ========================================= */
+
+// Global State Management
+var hubTimers = {};
+var hubIndices = {};
+var isJumping = {};
+
+/**
+ * 🚀 OPEN POPUP
+ * This matches your card buttons: onclick="openProjectPopup('project1')"
+ */
+function openProjectPopup(projectId) {
+    const popup = document.getElementById(projectId + '-popup');
+    if (!popup) return;
+    
+    // 1. Show the popup
+    popup.classList.add('active');
+
+// 💡 THE HINT LOGIC:
+    // Find the carousel controls inside this specific popup
+    const controls = popup.querySelector('.carousel-controls');
+    if (controls) {
+        // 1. Force them to be visible immediately
+        controls.classList.add('show-hint');
+
+        // 2. After 2 seconds, remove the force-visible class
+        // The existing CSS transition will handle the smooth fade out
+        setTimeout(() => {
+            controls.classList.remove('show-hint');
+        }, 2000);
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    // 2. Identify project key (e.g., 'p1')
+    const projKey = projectId.replace('project', 'p');
+    
+    // 3. Reset carousel to start state
+    resetCarouselState(projKey);
+    
+    // 4. Start Auto-Slide immediately
+    const track = document.getElementById('track-' + projKey);
+    if (track) {
+        // Actual unique images = Total images minus the 1 clone at the end
+        const uniqueCount = track.children.length - 2;
+        if (uniqueCount > 0) {
+            startAutoSlide(projKey, uniqueCount);
+        }
+    }
+}
+
+
+/**
+ * ❌ CLOSE POPUP
+ * This matches your X button: onclick="closeHubPopup('project1-popup')"
+ */
+function closeHubPopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+
+    popup.classList.remove('active');
+    document.body.style.overflow = 'auto';
+
+    // Stop the timer using the derived key
+    const projKey = popupId.replace('project', 'p').replace('-popup', '');
+    stopAutoSlide(projKey);
+}
+
+/**
+ * 🎡 MOVE CAROUSEL LOGIC
+ * Handles the "Forward Only" infinite loop math
+ */
+/* This function moves the images. I updated it to move BOTH the small and big tracks */
+function moveHubSlide(id, dir, count) {
+    if (isJumping[id]) return; // Stop if currently teleporting
+    if (hubIndices[id] === undefined) hubIndices[id] = 1;
+
+    // 🕵️‍♀️ 1. Find the Small Track AND the Big 'Focus' Track
+    const track = document.getElementById('track-' + id);
+    const focusTrack = document.getElementById('track-' + id + '-focus');
+    const tracks = [track, focusTrack]; // Put them in a list to move both
+
+    hubIndices[id] += dir; // Move to next page
+
+    // 🎢 2. Slide both tracks at the same time
+    tracks.forEach(t => {
+        if(t) {
+            t.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+            t.style.transform = `translateX(-${hubIndices[id] * 100}%)`;
+        }
+    });
+
+    // ✨ 3. THE INFINITE TELEPORT (Forward and Backward)
+    if (hubIndices[id] > count || hubIndices[id] < 1) {
+        isJumping[id] = true;
+        setTimeout(() => {
+            // Figure out which image to jump to
+            hubIndices[id] = (hubIndices[id] > count) ? 1 : count;
+
+            tracks.forEach(t => {
+                if(t) {
+                    t.style.transition = 'none'; // Instant jump (no sliding)
+                    t.style.transform = `translateX(-${hubIndices[id] * 100}%)`;
+                }
+            });
+            // Refresh the browser so it sees the jump
+            void (track ? track.offsetWidth : 0);
+            isJumping[id] = false;
+        }, 600); // Wait for the 0.6s slide to finish
+    }
+
+    // ⚪ 4. Update dashes in BOTH the Small View and the Big View
+    const viewports = [document.getElementById('viewport-' + id), document.getElementById('focus-' + id)];
+    const activeDash = (hubIndices[id] - 1 + count) % count;
+    
+    viewports.forEach(v => {
+        if(v) {
+            const dashes = v.querySelectorAll('.dash-item');
+            dashes.forEach((dash, i) => dash.classList.toggle('active', i === activeDash));
+        }
+    });
+}
+
+
+/* This function turns the Full Screen layer on or off */
+/* --- 🔍 TOGGLE FOCUS (With 2-second Hint) --- */
+function toggleFocus(id) {
+    const overlay = document.getElementById('focus-' + id);
+    if (!overlay) return;
+
+    // 1. Switch the mode (Existing)
+    overlay.classList.toggle('active');
+    
+    // --- 💡 ADD THIS HINT LOGIC START ---
+    if (overlay.classList.contains('active')) {
+        // Find elements inside this specific focus overlay
+        const controls = overlay.querySelector('.carousel-controls');
+        const interactBtn = overlay.querySelector('.btn-focus-interact');
+
+        // Show them immediately
+        if (controls) controls.classList.add('show-hint');
+        if (interactBtn) interactBtn.classList.add('show-hint');
+
+        // Hide them after 2 seconds
+        setTimeout(() => {
+            if (controls) controls.classList.remove('show-hint');
+            if (interactBtn) interactBtn.classList.remove('show-hint');
+        }, 3000);
+    }
+    // --- 💡 ADD THIS HINT LOGIC END ---
+
+    // 2. Clear the button focus (Existing)
+    if (document.activeElement) document.activeElement.blur();
+
+    // 3. Refresh the Timer (Existing)
+    const track = document.getElementById('track-' + id);
+    if (track) {
+        const uniqueCount = track.children.length - 2;
+        startAutoSlide(id, uniqueCount);
+    }
+}
+
+
+
+/* --- 🕒 SMART TIMER ENGINE --- */
+function startAutoSlide(id, count) {
+    stopAutoSlide(id); // Clear old timers
+
+    // Check if this specific project is in Focus Mode
+    const focusOverlay = document.getElementById('focus-' + id);
+    const isFocusActive = focusOverlay && focusOverlay.classList.contains('active');
+
+    // 💡 LOGIC: If Focus is active, use 6000ms (6s), otherwise use 3000ms (3s)
+    const currentSpeed = isFocusActive ? 6000 : 3000;
+
+    hubTimers[id] = setInterval(() => {
+        moveHubSlide(id, 1, count);
+    }, currentSpeed); 
+}
+
+function stopAutoSlide(id) {
+    if (hubTimers[id]) {
+        clearInterval(hubTimers[id]);
+    }
+}
+
+/**
+ * 🖱️ MANUAL CONTROLS (Arrows)
+ */
+function manualMove(id, dir) {
+    const track = document.getElementById('track-' + id);
+    if (!track) return;
+    const uniqueCount = track.children.length - 2;
+    stopAutoSlide(id); // Kill auto-slide when user interacts
+    moveHubSlide(id, dir, uniqueCount);
+}
+
+function resetCarouselState(id) {
+    hubIndices[id] = 1; // Always start at image 1
+    const tracks = [document.getElementById('track-' + id), document.getElementById('track-' + id + '-focus')];
+    tracks.forEach(t => { 
+        if(t) {
+            t.style.transition = 'none';
+            t.style.transform = 'translateX(-100%)'; 
+        }
+    });
+}
+
+
+/**
+ * 🛑 HOVER DETECTION INITIALIZATION
+ */
+window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.carousel-viewport').forEach(vp => {
+        const id = vp.id.replace('viewport-', '');
+        const track = vp.querySelector('.carousel-track');
+        
+        vp.addEventListener('mouseenter', () => stopAutoSlide(id));
+        vp.addEventListener('mouseleave', () => {
+            if (track) {
+                const uniqueCount = track.children.length - 2;
+                startAutoSlide(id, uniqueCount);
+            }
+        });
+    });
+});
+
+
+
         const dot = document.getElementById('cursor-dot');
         const ring = document.getElementById('cursor-ring');
         const coords = document.getElementById('cursor-coords');
@@ -2710,10 +4635,6 @@ window.addEventListener('load', startLoader);
 
        
        /* --- 🪟 POPUP HANDLERS --- */
-       function openProjectPopup(projectId) {
-    document.getElementById(projectId + '-popup').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
 
 function openCertPopup(certId) {
     document.getElementById(certId + '-popup').classList.add('active');
@@ -2885,6 +4806,33 @@ window.addEventListener('scroll', () => {
 const date = new Date();
 const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 document.getElementById('last-updated').innerText = `${months[date.getMonth()]} ${date.getFullYear()}`;
+
+
+
+
+/**
+ * 📊 SQL RESULT TOGGLE
+ * Slides the result image/table down when clicked
+ */
+function toggleResult(btn) {
+    const resultArea = btn.nextElementSibling;
+    const arrow = btn.querySelector('svg');
+    
+    if (resultArea.style.display === "block") {
+        resultArea.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        resultArea.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+        
+        // Play the click sound if available
+        if (typeof clickSound !== 'undefined') {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(() => {});
+        }
+    }
+}
+
 
 
     </script>
