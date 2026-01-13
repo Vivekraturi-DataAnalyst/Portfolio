@@ -1,4 +1,4 @@
-<!-- Fully working with all links and images. Just before sql popup formatting  -->
+<!-- Fully working with all links and images. Just before mobile optimization.  -->
 
 <!-- 
  👋 INSTRUCTIONS:
@@ -398,6 +398,12 @@ body.light-mode .hub-title-line {
 /* Add a slight zoom-in effect to the site content when it reveals */
 #hero {
     transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s ease;
+}
+
+/* --- ⚡️ LOCK SCROLL DURING LOAD --- */
+body.loading {
+    overflow: hidden !important; /* This stops the scroll */
+    height: 100vh;               /* This ensures the page doesn't expand */
 }
 
 body.loading #hero {
@@ -961,19 +967,6 @@ body.light-mode #connect span {
             color: #e0e7ff;
         }
 
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-menu-backdrop.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
 
         .hamburger span {
             display: block;
@@ -1330,30 +1323,7 @@ body.light-mode .section-bg-text {
         }
 
 
-        /* --- 📱 RESPONSIVE DESIGN (Tablets & Mobile) --- */
-        @media (max-width: 768px) {
-            .project-card {
-                min-width: 320px;
-                max-width: 320px;
-            }
-            
-            .project-heading-container {
-                min-width: 100vw;
-            }
-            
-            .projects-content {
-                padding: 0 2rem;
-                gap: 2rem;
-            }
 
-            .featured-text {
-                font-size: 20vw;
-            }
-
-            #projects {
-                height: 300vh;
-            }
-        }
 
 
         /* --- 📱 RESPONSIVE DESIGN (Small Mobile) --- */
@@ -2182,7 +2152,205 @@ body.light-mode .cert-seal {
 }
 
 
+/* --- 💎 PREMIUM MOBILE MENU (Under-Nav Version) --- */
+:root {
+    --nav-height: 62px; /* Matches your navbar height precisely */
+}
 
+.mobile-menu-backdrop {
+    position: fixed;
+    top: var(--nav-height); /* Starts below navbar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 80;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+}
+
+.mobile-menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: calc(var(--nav-height) - 1px);  /* Starts below navbar */
+    right: -100%; 
+    width: 85%;
+    max-width: 320px;
+    height: calc(100vh - var(--nav-height) + 1px); /* Fills remaining height */
+    background: rgba(11, 17, 32, 0.98); 
+    backdrop-filter: blur(20px);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    padding: 150px 40px; /* Reduced top padding since nav is gone */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid rgba(139, 154, 255, 0.1);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+/* Ensure the Navbar is ALWAYS on top */
+nav {
+    z-index: 100 !important; 
+}
+
+.mobile-nav-link {
+    font-size: 20px; /* Slightly smaller for better fit */
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.mobile-nav-link.active {
+    color: #8b9aff;
+    border-right: 3px solid #8b9aff;
+}
+
+/* Light Mode support */
+body.light-mode .mobile-menu {
+    background: rgba(255, 255, 255, 0.98);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+/* ========================================= */
+/*      COMPLETE MOBILE DESIGN OVERHAUL      */
+/* ========================================= */
+@media (max-width: 768px) {
+    /* 1. HIDE CURSOR */
+    #cursor-dot, #cursor-ring, #cursor-coords { display: none !important; }
+    * { cursor: auto !important; }
+
+    /* 2. FIX PAGE OVERFLOW (The "Right Space" Issue) */
+    html, body { overflow-x: hidden !important; width: 100vw; position: relative; }
+
+    /* 3. NAVIGATION & LOGO FIX */
+    nav { z-index: 100 !important; }
+    nav .text-xl { position: relative; z-index: 101; font-size: 1.1rem !important; }
+    
+
+    #hero {
+        padding-top: 120px !important; /* Adjust this number (e.g., 120px to 180px) to get the perfect gap */
+    }
+
+    /* Un-hide original Toggle & Position it correctly */
+    nav .hidden.md\:flex {
+        display: flex !important;
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent !important;
+        border: none !important;
+    }
+    nav .hidden.md\:flex a { display: none !important; } /* Hide text links */
+    .theme-toggle { transform: scale(0.8); }
+
+    /* 4. HORIZONTAL PROJECTS (Optimized for Mobile) */
+    #projects {
+        /* Reset high scroll track to fit content height */
+        height: auto !important; 
+        position: relative !important;
+        padding-top: 60px;
+        padding-bottom: 210px;
+    }
+
+    .projects-sticky-container {
+        /* Stop the sticky behavior */
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .projects-horizontal-wrapper {
+        /* Force container to flow vertically */
+        display: block !important;
+        height: auto !important;
+        /* KILL the JS transform so cards stay centered */
+        transform: none !important; 
+    }
+
+    .projects-content {
+        /* Stack cards in a column */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 3rem !important; /* Space between stacked cards */
+        padding: 0 1.5rem !important; /* Side margins */
+        width: 100% !important;
+    }
+
+    .project-heading-container {
+        min-width: auto !important;
+        margin-bottom: 3rem;
+        display: block !important;
+    }
+
+    .project-card {
+        /* Cards take full available width */
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important; /* Height fits content */
+        padding: 1.5rem !important;
+    }
+
+    /* Hide horizontal background text for cleaner vertical look */
+    .featured-text {
+        display: none !important;
+    }
+    
+    .project-image-container {
+        width: 100% !important;
+        aspect-ratio: 16/9 !important;
+        height: auto !important;
+    }
+}
+
+    /* Scaling the background WORK text to prevent huge page width gaps */
+    .featured-text {
+        font-size: 100px !important;
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        white-space: nowrap !important;
+    }
+
+    .featured-text { font-size: 20vw !important; opacity: 0.03; }
+
+
+    /* 6. CERTIFICATE & LOGO FIX */
+    .issuer-logo-small { width: 28px !important; height: 28px !important; flex-shrink: 0 !important; }
+    .certificate-card { padding: 1.5rem !important; }
+    .certificate-card h3 { font-size: 1.1rem !important; }
+
+    /* 7. FOOTER FINALE OPTIMIZATION */
+    .thank-you-card { 
+        width: 90% !important; 
+        margin: 0 auto 50px auto !important;
+        padding: 4rem 1rem !important;
+        border-radius: 30px !important;
+    }
+    .thank-you-card h2 { font-size: 1.8rem !important; }
+    .footer-bottom-bar .max-w-6xl { flex-direction: column; text-align: center; gap: 1rem; }
+
+
+/* Reminder Show Logic */
+#desktop-reminder.active { top: 0 !important; }
+
+}
 
 
 
@@ -2194,6 +2362,14 @@ body.light-mode .cert-seal {
 <!--               BODY CONTENT                -->
 <!-- ========================================= -->
 <body class="text-white relative overflow-x-hidden" style="background-color: #020617; background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; background-attachment: fixed;">
+
+<!-- 📱 MOBILE-ONLY: DESKTOP REMINDER -->
+<div id="desktop-reminder" class="fixed -top-24 left-0 w-full z-[10001] transition-all duration-700 pointer-events-none md:hidden">
+    <div class="mx-4 mt-4 p-4 bg-indigo-600/90 backdrop-blur-md border border-indigo-400 rounded-2xl shadow-2xl flex items-center justify-center gap-3">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <p class="text-white text-[11px] font-bold uppercase tracking-widest text-center">Switch to Desktop for better experience</p>
+    </div>
+</div>
 
 
 <!-- ========================================= -->
@@ -2253,29 +2429,40 @@ body.light-mode .cert-seal {
                     </div>
                 </div>
                 
-                <button class="md:hidden hamburger" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+<button class="md:hidden hamburger relative z-[101]" onclick="toggleMobileMenu()">
+    <span class="bg-white"></span>
+    <span class="bg-white"></span>
+    <span class="bg-white"></span>
+</button>
             </div>
         </div>
         
-        <div class="mobile-menu-backdrop md:hidden fixed inset-0 z-30" style="background: #050508; opacity: 0; visibility: hidden; transition: all 0.3s ease;"></div>
-        
-        <div class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 z-40" style="background: #050508; border-left: 1px solid rgba(139, 154, 255, 0.2); box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);">
-            <div class="pt-20 px-6">
-                <div class="rounded-lg p-4" style="background: #1a1a2e; border: 1px solid rgba(139, 154, 255, 0.3); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);">
-                    <a href="#hero" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">Home</a>
-                    <a href="#about" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">About</a>
-                    <a href="#projects" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">Projects</a>
-                    <a href="#skills" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">Skills</a>
-                    <a href="#certifications" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">Certifications</a>
-                    <a href="#experience" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">Experience</a>
-                    <a href="#connect" class="block py-3 px-3 rounded-md transition-all duration-300" style="color: #a5b4fc;" onmouseover="this.style.background='rgba(139, 154, 255, 0.2)'; this.style.color='#ffffff'" onmouseout="this.style.background='transparent'; this.style.color='#a5b4fc'" onclick="toggleMobileMenu()">Connect</a>
-                </div>
-            </div>
+       <!-- Improved Mobile Overlay -->
+<div class="mobile-menu-backdrop md:hidden" onclick="toggleMobileMenu()"></div>
+
+<div class="mobile-menu md:hidden">
+    
+    
+    <nav class="flex flex-col">
+        <a href="#hero" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="#about" class="mobile-nav-link" onclick="toggleMobileMenu()">About</a>
+        <a href="#projects" class="mobile-nav-link" onclick="toggleMobileMenu()">Projects</a>
+        <a href="#skills" class="mobile-nav-link" onclick="toggleMobileMenu()">Skills</a>
+        <a href="#certifications" class="mobile-nav-link" onclick="toggleMobileMenu()">Certificates</a>
+        <a href="#experience" class="mobile-nav-link" onclick="toggleMobileMenu()">Experience</a>
+        <a href="#connect" class="mobile-nav-link" onclick="toggleMobileMenu()">Connect</a>
+    </nav>
+
+    <!-- Bottom Info in Menu -->
+    <div class="mt-auto pt-10 border-t border-white/5">
+        <p class="text-[12px] text-gray-500 font-bold tracking-widest uppercase mb-2">Social</p>
+        <div class="flex gap-6">
+             <a href="https://www.linkedin.com/in/vivekraturi/" class="text-[12px] text-indigo-400 font-bold uppercase">LinkedIn</a>
+             <a href="mailto:vivekraturi.work@gmail.com" class="text-[12px] text-indigo-400 font-bold uppercase">Email</a>
         </div>
+    </div>
+</div>
+
     </nav>
 
     
@@ -2299,7 +2486,7 @@ body.light-mode .cert-seal {
 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
     <!-- ✏️ EDITABLE: Resume Link -->
     <!-- Primary Button: View Resume -->
-    <a href="https://drive.google.com/file/d/1JJDF6F75RcAoYIUDrBuGFX2cqIbu8Mfq/view?usp=drivesdk" target="_blank" class="px-8 py-3 rounded-lg font-semibold glow-button text-white transition-all duration-300">
+    <a href="https://drive.google.com/file/d/1GExPMKr4K9zfXYvl39F1u5jZC69Bipse/view?usp=drive_link" target="_blank" class="px-8 py-3 rounded-lg font-semibold glow-button text-white transition-all duration-300">
         View Resume
     </a>
 
@@ -4221,7 +4408,7 @@ body.light-mode .cert-seal {
 
             <div class="flex flex-col gap-3">
                 <!-- Option 1: View -->
-                <a href="https://drive.google.com/file/d/1JJDF6F75RcAoYIUDrBuGFX2cqIbu8Mfq/view?usp=drivesdk" 
+                <a href="https://drive.google.com/file/d/1GExPMKr4K9zfXYvl39F1u5jZC69Bipse/view?usp=drive_link" 
                    target="_blank" 
                    class="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-[12px] font-bold uppercase tracking-widest hover:bg-white/10 transition-all text-white text-center">
                    View in Browser
@@ -4230,13 +4417,24 @@ body.light-mode .cert-seal {
                 <!-- Option 2: Download -->
                 <!-- 🔧 NOTE: For direct download, the file must be in your GitHub folder. Replace URL with your file name -->
                 <!-- The 'download' attribute forces the browser to save the file instead of opening it -->
-<a href="Vivek_Resume.pdf" download="Vivek_Resume.pdf" class="w-full py-3 bg-indigo-600 rounded-xl text-[12px] font-bold uppercase tracking-widest hover:bg-indigo-700 transition-all text-white text-center">
+<a href="Vivek_Raturi_Resume_WN.pdf" download="Vivek_Resume.pdf" class="w-full py-3 bg-indigo-600 rounded-xl text-[12px] font-bold uppercase tracking-widest hover:bg-indigo-700 transition-all text-white text-center">
    Download to Device
 </a>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- Sound Effects -->
+<audio id="hover-sound" preload="auto">
+    <!-- Replace these SRCs with your local paths once you upload them: src="sounds/hover.mp3" -->
+    <source src="sounds/hover.mp3" type="audio/mpeg">
+</audio>
+<audio id="click-sound" preload="auto">
+    <!-- Replace these SRCs with your local paths once you upload them: src="sounds/click.mp3" -->
+    <source src="sounds/click.mp3" type="audio/mpeg">
+</audio>
 
 
     
@@ -4250,6 +4448,7 @@ body.light-mode .cert-seal {
         document.body.classList.add('loading');
 
 function startLoader() {
+window.scrollTo(0, 0);
     const bar = document.getElementById('loader-bar');
     const pct = document.getElementById('loader-percentage');
     const status = document.getElementById('loader-status');
@@ -4559,14 +4758,22 @@ window.addEventListener('DOMContentLoaded', () => {
             ring.style.top = y + 'px';
         });
 
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            const backdrop = document.querySelector('.mobile-menu-backdrop');
-            const hamburger = document.querySelector('.hamburger');
-            menu.classList.toggle('active');
-            backdrop.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
+function toggleMobileMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    const backdrop = document.querySelector('.mobile-menu-backdrop');
+    const hamburger = document.querySelector('.hamburger');
+    
+    menu.classList.toggle('active');
+    backdrop.classList.toggle('active');
+    hamburger.classList.toggle('active'); // This turns hamburger into X
+
+    // Prevent background scrolling when menu is open
+    if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+}
 
         
         /* --- 🌓 THEME TOGGLE LOGIC --- */
@@ -4702,6 +4909,14 @@ document.addEventListener('click', function(e) {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + currentSection) {
                     link.classList.add('active');
+// Also update the mobile links
+const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+mobileLinks.forEach(mLink => {
+    mLink.classList.remove('active');
+    if (mLink.getAttribute('href') === '#' + currentSection) {
+        mLink.classList.add('active');
+    }
+});
                 }
             });
         }
@@ -4834,21 +5049,33 @@ function toggleResult(btn) {
 }
 
 
+// 1. Desktop Reminder System
+window.addEventListener('load', () => {
+    if (window.innerWidth < 1024) {
+        setTimeout(() => {
+            const reminder = document.getElementById('desktop-reminder');
+            if(reminder) {
+                reminder.classList.add('active');
+                setTimeout(() => {
+                    reminder.classList.remove('active');
+                }, 6000);
+            }
+        }, 5000);
+    }
+});
+
+// 2. Fix Hamburger Links (Close menu on click)
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.onclick = () => {
+        const menu = document.querySelector('.mobile-menu');
+        if(menu.classList.contains('active')) toggleMobileMenu();
+    };
+});
+
 
     </script>
 
-<!-- Sound Effects -->
-    <audio id="hover-sound" preload="auto">
-        <source src="https://cdn.freesound.org/previews/321/321104_5260872-lq.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="click-sound" preload="auto">
-        <source src="https://cdn.freesound.org/previews/399/399934_7170007-lq.mp3" type="audio/mpeg">
-    </audio>
 
-    
-    <!-- ========================================= -->
-    <!--               JAVASCRIPT LOGIC             -->
-    <!-- ========================================= -->
     <script>
 
 /* --- 🔊 AUDIO SOUND EFFECTS --- */
