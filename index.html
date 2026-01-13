@@ -5295,8 +5295,30 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSoundUI();
     attachSounds();
 });
+
+		// to open resume popup
+
+function openResumePopup() {
+    document.getElementById('resume-popup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeResumePopup() {
+    document.getElementById('resume-popup').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Ensure the "Click outside to close" works for this new popup
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'resume-popup') {
+        closeResumePopup();
+    }
+});
+
+		
    </script>
 
 </body>
 </html>
+
 
