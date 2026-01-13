@@ -3079,14 +3079,14 @@ body.light-mode #sound-toggle:hover {
 
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden;">
         <!-- The Infinite Wave -->
-        <g id="wave-container">
+        <g id="wave-container" class="hidden">
 <path class="wave-path" 
     d="M 0 12 Q 3 10 6 12 T 12 12 Q 15 10 18 12 T 24 12 Q 27 10 30 12 T 36 12 Q 39 10 42 12 T 48 12" 
     stroke-width="1.5" stroke-linecap="round" />
         </g>
         
         <!-- The Static Mute Line -->
-        <path id="mute-line" class="hidden" d="M 6 12 H 18" 
+        <path id="mute-line" d="M 6 12 H 18" 
             stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
     </svg>
 </button>
@@ -5207,7 +5207,8 @@ const hoverSound = document.getElementById('hover-sound');
 const clickSound = document.getElementById('click-sound');
 const bgMusic = document.getElementById('bg-music'); // NEW
 
-let isMuted = localStorage.getItem('portfolio-muted') === 'true';
+let storedMuteState = localStorage.getItem('portfolio-muted');
+let isMuted = storedMuteState === null ? true : storedMuteState === 'true';
 
 // Volume Levels
 hoverSound.volume = 0.06; 
@@ -5298,4 +5299,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
