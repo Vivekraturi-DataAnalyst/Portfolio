@@ -2317,7 +2317,17 @@ body.light-mode .mobile-menu {
         aspect-ratio: 16/9 !important;
         height: auto !important;
     }
-}
+
+    /* Scaling the background WORK text to prevent huge page width gaps */
+    .featured-text {
+        font-size: 100px !important;
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        white-space: nowrap !important;
+    }
+
+    .featured-text { font-size: 20vw !important; opacity: 0.03; }
 
 
     /* 6. CERTIFICATE & LOGO FIX */
@@ -2325,12 +2335,21 @@ body.light-mode .mobile-menu {
     .certificate-card { padding: 1.5rem !important; }
     .certificate-card h3 { font-size: 1.1rem !important; }
 
-
+    /* 7. FOOTER FINALE OPTIMIZATION */
+    .thank-you-card { 
+        width: 90% !important; 
+        margin: 0 auto 50px auto !important;
+        padding: 4rem 1rem !important;
+        border-radius: 30px !important;
+    }
+    .thank-you-card h2 { font-size: 1.8rem !important; }
+    .footer-bottom-bar .max-w-6xl { flex-direction: column; text-align: center; gap: 1rem; }
 
 
 /* Reminder Show Logic */
 #desktop-reminder.active { top: 0 !important; }
 
+}
 }
 
 
@@ -5134,4 +5153,5 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
+
 
