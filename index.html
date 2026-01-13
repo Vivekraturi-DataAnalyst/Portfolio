@@ -37,6 +37,24 @@
             --nav-bg: linear-gradient(180deg, #ffffff 0%, #e5e7eb 100%);
         }
 
+/* --- 🚫 TOTAL SCROLLBAR REMOVAL --- */
+
+/* 1. For Chrome, Safari, and newer versions of Edge */
+*::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* 2. For Firefox */
+* {
+    scrollbar-width: none !important;
+}
+
+/* 3. For Internet Explorer and Legacy Edge */
+* {
+    -ms-overflow-style: none !important;
+}
 
 
 
@@ -2352,6 +2370,86 @@ body.light-mode .mobile-menu {
 }
 }
 
+		/* --- 🌊 GHOST-UI WAVE TOGGLE & TOOLTIP --- */
+#sound-toggle {
+    opacity: 0.15 !important; /* Force low opacity in both states */
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+#sound-toggle:hover {
+    opacity: 1 !important; /* Full visibility on hover */
+}
+
+/* Perfect Loop Animation */
+@keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-12px); }
+}
+
+.wave-path {
+    animation: waveMove 2s linear infinite;
+    stroke: #8b9aff;
+}
+
+/* Tooltip Styling */
+.sound-tooltip {
+    position: absolute;
+    right: 120%; /* Position to the left of the button */
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(8px);
+    color: #8b9aff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(139, 154, 255, 0.2);
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+#sound-toggle:hover .sound-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* --- ☀️ LIGHT MODE SUPPORT FOR SOUND TOGGLE --- */
+
+/* 1. Button Container - Light Glassmorphism */
+body.light-mode #sound-toggle {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 2. Wave Color - Deep Indigo for Contrast */
+body.light-mode .wave-path {
+    stroke: #4338ca !important;
+}
+
+/* 3. Mute Line Color - Slate Grey */
+body.light-mode #mute-line {
+    stroke: #64748b !important;
+}
+
+/* 4. Tooltip - White Background with Indigo Text */
+body.light-mode .sound-tooltip {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #4338ca !important;
+    border-color: rgba(67, 56, 202, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 5. Hover state for Light Mode */
+body.light-mode #sound-toggle:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(67, 56, 202, 0.3) !important;
+}
 
 
 
@@ -2970,6 +3068,28 @@ body.light-mode .mobile-menu {
             </div>
 </section>
 
+
+			
+			<!-- Sound Button -->
+			
+			<button id="sound-toggle" onclick="toggleMute()" class="fixed bottom-6 right-6 z-[9999] w-12 h-12 flex items-center justify-center bg-slate-900/20 backdrop-blur-sm border border-white/5 rounded-full shadow-lg group">
+    
+    <!-- Tooltip -->
+    <span id="sound-tooltip" class="sound-tooltip">Sound On</span>
+
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden;">
+        <!-- The Infinite Wave -->
+        <g id="wave-container">
+<path class="wave-path" 
+    d="M 0 12 Q 3 10 6 12 T 12 12 Q 15 10 18 12 T 24 12 Q 27 10 30 12 T 36 12 Q 39 10 42 12 T 48 12" 
+    stroke-width="1.5" stroke-linecap="round" />
+        </g>
+        
+        <!-- The Static Mute Line -->
+        <path id="mute-line" class="hidden" d="M 6 12 H 18" 
+            stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
+    </svg>
+</button>
 
 
 <!-- GRAND FINALE FOOTER -->
@@ -4432,8 +4552,11 @@ body.light-mode .mobile-menu {
     <source src="sounds/hover.mp3" type="audio/mpeg">
 </audio>
 <audio id="click-sound" preload="auto">
-    <!-- Replace these SRCs with your local paths once you upload them: src="sounds/click.mp3" -->
+    
     <source src="sounds/click.mp3" type="audio/mpeg">
+</audio>
+	<audio id="bg-music" loop preload="auto">
+    <source src="sounds/bg.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -5078,81 +5201,106 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
 
     <script>
 
-/* --- 🔊 AUDIO SOUND EFFECTS --- */
-// Sound Effects System
+/* --- 🔊 ADVANCED AUDIO SYSTEM (SFX + BG MUSIC) --- */
 const hoverSound = document.getElementById('hover-sound');
 const clickSound = document.getElementById('click-sound');
+const bgMusic = document.getElementById('bg-music'); // NEW
 
-hoverSound.volume = 0.08; // Slightly lower for a subtle feel
-clickSound.volume = 0.12;
+let isMuted = localStorage.getItem('portfolio-muted') === 'true';
 
-// BROWSER FIX: This "unlocks" audio on the first click anywhere on the site
+// Volume Levels
+hoverSound.volume = 0.06; 
+clickSound.volume = 0.10;
+bgMusic.volume = 0.09; // NEW: Set this VERY low (0.03 to 0.05) so it's subtle
+
+// BROWSER FIX: Unlocks audio and starts music on first click
 const unlockAudio = () => {
-    hoverSound.play().then(() => {
-        hoverSound.pause();
-        hoverSound.currentTime = 0;
-    }).catch(() => {});
+    // SFX Priming
+    hoverSound.play().then(() => { hoverSound.pause(); hoverSound.currentTime = 0; }).catch(() => {});
+    clickSound.play().then(() => { clickSound.pause(); clickSound.currentTime = 0; }).catch(() => {});
     
-    clickSound.play().then(() => {
-        clickSound.pause();
-        clickSound.currentTime = 0;
-    }).catch(() => {});
+    // NEW: Start background music if not muted
+    if (!isMuted) {
+        bgMusic.play().catch(e => console.log("Music waiting for interaction"));
+    }
 
     document.removeEventListener('click', unlockAudio);
 };
 document.addEventListener('click', unlockAudio);
 
-// Function to attach sounds to elements
+// Toggle Mute Function
+function toggleMute() {
+    isMuted = !isMuted;
+    localStorage.setItem('portfolio-muted', isMuted);
+    updateSoundUI();
+    
+    // NEW: Handle music play/pause on toggle
+    if (isMuted) {
+        bgMusic.pause();
+    } else {
+        bgMusic.play().catch(() => {});
+        playClick(); 
+    }
+}
+
+function updateSoundUI() {
+    const waveContainer = document.getElementById('wave-container');
+    const muteLine = document.getElementById('mute-line');
+    const tooltip = document.getElementById('sound-tooltip');
+    const bgMusic = document.getElementById('bg-music');
+
+    if (isMuted) {
+        // Mute State
+        waveContainer.classList.add('hidden');
+        muteLine.classList.remove('hidden');
+        tooltip.innerText = "Sound Off"; // Update Tooltip
+        if (bgMusic) bgMusic.pause();
+    } else {
+        // Sound On State
+        waveContainer.classList.remove('hidden');
+        muteLine.classList.add('hidden');
+        tooltip.innerText = "Sound On"; // Update Tooltip
+        
+        // Play music if not in loading state
+        if (bgMusic && bgMusic.paused && !document.body.classList.contains('loading')) {
+            bgMusic.play().catch(() => {});
+        }
+    }
+}
+
+function playHover() {
+    if (isMuted) return; 
+    hoverSound.currentTime = 0;
+    hoverSound.play().catch(() => {});
+}
+
+function playClick() {
+    if (isMuted) return; 
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+}
+
+// Initial attachment
 function attachSounds() {
     const interactiveElements = document.querySelectorAll('button, a, .card-hover, .nav-link, .skill-bubble, .project-card');
-    
     interactiveElements.forEach(element => {
-        // Prevent duplicate listeners if this function is called twice
-        element.removeEventListener('mouseenter', playHover);
-        element.removeEventListener('click', playClick);
-
         element.addEventListener('mouseenter', playHover);
         element.addEventListener('click', playClick);
     });
 }
 
-function playHover() {
-    hoverSound.currentTime = 0;
-    hoverSound.play().catch(e => console.log("Audio play blocked until user interaction"));
-}
-
-function playClick() {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(e => console.log("Audio play blocked until user interaction"));
-}
-
-// Initial attachment
-document.addEventListener('DOMContentLoaded', attachSounds);
-
-
-
-function openResumePopup() {
-    document.getElementById('resume-popup').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeResumePopup() {
-    document.getElementById('resume-popup').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-// Ensure the "Click outside to close" works for this new popup
-document.addEventListener('click', function(e) {
-    if (e.target.id === 'resume-popup') {
-        closeResumePopup();
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    updateSoundUI();
+    attachSounds();
 });
+
 
 
     </script>
 
 </body>
 </html>
+
 
 
 
