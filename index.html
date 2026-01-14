@@ -5280,7 +5280,7 @@ function toggleResult(btn) {
 
 // 1. Desktop Reminder System
 window.addEventListener('load', () => {
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < 1024) {
         setTimeout(() => {
             const reminder = document.getElementById('desktop-reminder');
             if(reminder) {
@@ -5303,7 +5303,7 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
 
 		/* --- 📱 MOBILE GATE LOGIC --- */
 function handleViewDetails(type, id) {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 900) {
         const gate = document.getElementById('mobile-gate');
         const title = document.getElementById('gate-title');
         const desc = document.getElementById('gate-desc');
@@ -5461,6 +5461,7 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
+
 
 
 
