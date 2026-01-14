@@ -2530,6 +2530,51 @@ body.light-mode #sound-toggle:hover {
 
 
 
+
+		/* --- 📱 DESKTOP-MODE FIX FOR CERTIFICATES & EXPERIENCE --- */
+
+/* 1. Target the specific containers for Certs and Exp */
+#cert1-popup .popup-content, 
+#cert2-popup .popup-content, 
+#exp-popup .popup-content {
+    /* Kill the hardcoded 580px/600px heights */
+    height: auto !important;
+    max-height: 92vh !important; /* Uses 92% of the screen height */
+    
+    /* Ensure scrolling is active if text is very long */
+    overflow-y: auto !important;
+    display: block !important;
+}
+
+/* 2. Adjust internal spacing for mobile screens in Desktop Mode */
+/* (This stops the 3rem gaps from eating up all your horizontal space) */
+@media (max-width: 1100px) {
+    #cert1-popup .case-study-grid, 
+    #cert2-popup .case-study-grid, 
+    #exp-popup .case-study-grid {
+        padding: 1.5rem !important; /* Reduced from 3rem */
+        gap: 1.5rem !important;     /* Reduced from 3rem */
+    }
+
+    /* Make the 2-column grid slightly more compact */
+    #exp-popup .case-study-grid, 
+    #cert1-popup .case-study-grid,
+    #cert2-popup .case-study-grid {
+        grid-template-columns: 1.2fr 1fr !important; /* Gives more room to the text column */
+    }
+}
+
+/* 3. Fix the "Metadata" boxes (Issuer, Date, etc.) */
+#cert1-popup .bg-white\/5, 
+#cert2-popup .bg-white\/5, 
+#exp-popup .bg-white\/5 {
+    padding: 1.25rem !important;
+}
+
+
+		
+
+
     </style>
 </head>
 
@@ -5461,6 +5506,7 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
+
 
 
 
