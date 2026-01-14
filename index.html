@@ -512,6 +512,74 @@ body.light-mode .certificate-card::after {
 }
 
 
+
+		/* ---☀️ LIGHT MODE SUPPORT: MOBILE GATE --- */
+
+/* 1. Main Background Overlay (Blurry Light Grey) */
+body.light-mode #mobile-gate {
+    background: rgba(241, 245, 249, 0.9) !important; /* Soft slate-50 background */
+    backdrop-filter: blur(20px);
+}
+
+/* 2. The Card Container */
+body.light-mode #mobile-gate > div {
+    background: #ffffff !important; /* Pure white card */
+    border-color: #e2e8f0 !important; /* Light border */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* 3. The Icon Box at the top */
+body.light-mode #mobile-gate div.bg-indigo-500\/10 {
+    background: #f5f3ff !important; /* Extremely light indigo */
+    border-color: #e0e7ff !important;
+}
+
+/* 4. Title and Description */
+body.light-mode #gate-title {
+    color: #1e1b4b !important; /* Deep Navy */
+}
+
+body.light-mode #gate-desc {
+    color: #475569 !important; /* Slate grey for readability */
+}
+
+/* 5. Strong Indigo Accents (Power BI, SQL, Desktop Site text) */
+body.light-mode #mobile-gate .text-indigo-400 {
+    color: #4338ca !important; /* Darker Indigo for white background */
+}
+
+/* 6. Pro Tip Footer */
+body.light-mode #mobile-gate .border-white\/5 {
+    border-top-color: #f1f5f9 !important; /* Very subtle separator */
+}
+
+/* 7. The Visual Icons ( ⋮ or AA ) */
+body.light-mode #mobile-gate .text-slate-300 {
+    color: #64748b !important; /* Darker slate so icons are visible */
+}
+
+/* 8. The Button (Adjusting shadow for light mode) */
+body.light-mode #mobile-gate button {
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2) !important;
+}
+
+/* --- 🎨 THEME-AWARE HIGHLIGHT --- */
+
+/* Default (Dark Mode) */
+.gate-highlight {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+/*☀️ Light Mode Override */
+body.light-mode .gate-highlight {
+    /* Turns into Deep Navy when background is white */
+    color: #1e1b4b !important; 
+    font-weight: 700;
+}
+
+
+		
 /* --- LIGHT MODE POPUP ADJUSTMENTS --- */
 
 /* 1. Popup Main Background */
@@ -2724,7 +2792,7 @@ body.light-mode #sound-toggle:hover {
                         </div>
                         
 
-                        <button onclick="openProjectPopup('project1')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="handleViewDetails('project', 'project1')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -2753,7 +2821,7 @@ body.light-mode #sound-toggle:hover {
                         </div>
                         
 
-                        <button onclick="openProjectPopup('project2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="handleViewDetails('project', 'project2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -2783,7 +2851,7 @@ body.light-mode #sound-toggle:hover {
                             </div>
                         </div>
                         
-                        <button onclick="openProjectPopup('project3')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="handleViewDetails('project', 'project3')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -2811,7 +2879,7 @@ body.light-mode #sound-toggle:hover {
                             </div>
                         </div>
                         
-                        <button onclick="openProjectPopup('project4')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
+                        <button onclick="handleViewDetails('project', 'project4')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base">
                             View Details
                         </button>
                     </div>
@@ -2936,7 +3004,7 @@ body.light-mode #sound-toggle:hover {
                         <span class="skill-bubble !text-[13px] !py-1 !px-3">Data Modeling</span>
                     </div>
                     
-                   <button onclick="openCertPopup('cert1')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base w-fit mx-auto">
+                   <button onclick="handleViewDetails('cert', 'cert1')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base w-fit mx-auto">
     View Details
 </button>
                 </div>
@@ -2982,7 +3050,7 @@ body.light-mode #sound-toggle:hover {
                         <span class="skill-bubble !text-[13px] !py-1 !px-3">Data Visualization</span>
                     </div>
                     
-                                       <button onclick="openCertPopup('cert2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base w-fit mx-auto">
+                                       <button onclick="handleViewDetails('cert', 'cert2')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base w-fit mx-auto">
     View Details
 </button>
                 </div>
@@ -3021,7 +3089,7 @@ body.light-mode #sound-toggle:hover {
                             
                         </div>
                     </div>
-                    <button onclick="openExpPopup()" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base mx-auto block">
+                    <button onclick="handleViewDetails('exp', '')" class="px-4 md:px-6 py-2 rounded-lg outline-button text-sm md:text-base mx-auto block">
     View Details
 </button>
                 </div>
@@ -3163,6 +3231,35 @@ body.light-mode #sound-toggle:hover {
 </section>
 
 
+<!-- 📱 DYNAMIC MOBILE GATE -->
+<div id="mobile-gate" class="fixed inset-0 z-[20000] hidden items-center justify-center p-6 bg-slate-950/90 backdrop-blur-2xl">
+    <div class="bg-slate-900 border border-indigo-500/30 p-8 rounded-[32px] max-w-sm w-full text-center shadow-2xl">
+        
+        <div class="w-20 h-20 bg-indigo-500/10 border border-indigo-500/20 rounded-3xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+        </div>
+
+        <!-- The text in these two tags will change automatically -->
+        <h3 id="gate-title" class="text-2xl font-bold text-white mb-4">Desktop Required</h3>
+        <p id="gate-desc" class="text-slate-400 text-sm leading-relaxed mb-8"></p>
+
+        <button onclick="closeGate()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-bold text-xs uppercase tracking-widest transition-all">
+            ← Back to Portfolio
+        </button>
+
+        <div class="mt-8 pt-6 border-t border-white/5">
+            <p class="text-[11px] text-indigo-400 uppercase tracking-widest font-bold mb-2">Pro Tip</p>
+<p class="text-[12px] text-slate-400">
+    Try switching to <span class="text-indigo-400 italic font-bold">Desktop Site</span> from your browser menu. (
+    <span class="inline-flex items-baseline text-[10px] font-black text-slate-300">
+        &nbsp;⋮&nbsp; or &nbsp;<span class="text-[7px] leading-none">A</span><span class="leading-none">A</span>&nbsp;
+    </span> )
+</p>
+        </div>
+    </div>
+</div>
 
 
 
@@ -5204,6 +5301,41 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
     };
 });
 
+		/* --- 📱 MOBILE GATE LOGIC --- */
+function handleViewDetails(type, id) {
+    if (window.innerWidth < 1024) {
+        const gate = document.getElementById('mobile-gate');
+        const title = document.getElementById('gate-title');
+        const desc = document.getElementById('gate-desc');
+
+        if (type === 'project') {
+            title.innerText = "Project Analysis";
+            desc.innerHTML = "Project details require a wider screen for clarity. Please switch to a <span class='gate-highlight'>Desktop.</span>";
+        } 
+        else if (type === 'exp') {
+            title.innerText = "Career Detail";
+            desc.innerHTML = "Experience details are best viewed on a larger screen for clarity. Please switch to a <span class='gate-highlight'>Desktop.</span>";
+        } 
+        else if (type === 'cert') {
+            title.innerText = "Verified Credential";
+            desc.innerHTML = "To view complete certification information, please switch to <span class='gate-highlight'>Desktop.</span>";
+        }
+
+        gate.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    } else {
+        // Desktop behavior
+        if (type === 'project') openProjectPopup(id);
+        if (type === 'cert') openCertPopup(id);
+        if (type === 'exp') openExpPopup();
+    }
+}
+
+function closeGate() {
+    document.getElementById('mobile-gate').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+		
 
     </script>
 
@@ -5329,6 +5461,7 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
+
 
 
 
